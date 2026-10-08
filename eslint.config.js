@@ -40,6 +40,7 @@ export default [
       'prettier.config.js',
       'src/components/ui/**',
       'src/routeTree.gen.ts',
+      '.claude/**',
     ],
   },
 ]
