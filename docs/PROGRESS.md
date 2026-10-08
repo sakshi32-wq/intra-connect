@@ -1,6 +1,6 @@
 # Progress
 
-**In progress:** ⏸ Phase 4 review gate — waiting for user approval
+**In progress:** Phases 5–10 — UI for all remaining sections, built in parallel worktrees (workflow `build-remaining-ui`), then merge + visual QA. User asked to complete the UI without per-phase gates (2026-10-08).
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -40,7 +40,7 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 
 ## Phase 4 — Overview
 - [x] Overview `/overview?step` (SectionBar + reusable Stepper + EHRs/Intraconnects/Practice diagram + glossary; steps 2–4 not designed → placeholder / link to Practices); matches frame at 1920 (panel, cards, box within 1–3px)
-- [ ] ⏸ Review
+- [x] Review — user: "just complete the UI"; shared components + route skeleton committed (2234281, cffee6c)
 
 ## Phase 5 — Connection
 - [ ] Connection, 56, 57 list `/connections` (status filter, search, app type, pagination) · 53 empty state
