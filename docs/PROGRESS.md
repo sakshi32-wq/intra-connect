@@ -1,6 +1,6 @@
 # Progress
 
-**In progress:** Phase 1 — mock data layer (`src/mocks/db.ts`, `src/mocks/data/*`)
+**In progress:** Phase 1 — 404 page
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -21,7 +21,7 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 - [x] Tailwind v4 + shadcn init; theme tokens in `src/styles/app.css`; Inter font (self-hosted `@fontsource-variable/inter`)
 - [x] shadcn components from COMPONENTS.md install list (`form` instead of `field`, per brief); theme-aware `cn` in `src/lib/utils.ts`
 - [x] Copy `docs/assets/images/*` → `public/images/` (logo wordmark placeholder is built with the sidebar in Phase 3 — SCREEN_MAP Q1)
-- [ ] Mock layer: `src/mocks/db.ts` (latency 300–600 ms) + `src/mocks/data/*`
+- [x] Mock layer: `src/mocks/db.ts` (latency 300–600 ms) + seeded `src/mocks/data/*` + feature `types.ts`; ESLint blocks `#/mocks` imports outside `src/features/*/api.ts`
 - [ ] `QueryClient` in router context; 404 page; `clean-demos`
 - [ ] ⏸ Review
 
