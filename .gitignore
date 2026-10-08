@@ -16,3 +16,5 @@ __unconfig*
 design/
 # Playwright output
 .playwright-mcp/
+# Agent git worktrees
+.claude/worktrees/
