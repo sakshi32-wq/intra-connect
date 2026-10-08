@@ -13,7 +13,7 @@ export function DetailPanel({ title, children, columns = 1, className }: DetailP
   return (
     <div className={cn('bg-panel px-[27px] py-[19px]', className)}>
       {title ? <h3 className="mb-4 text-lg font-medium text-foreground">{title}</h3> : null}
-      <div className={cn('grid gap-x-12 gap-y-3', columns === 2 && 'lg:grid-cols-2')}>{children}</div>
+      <div className={cn('grid gap-x-12 gap-y-3', columns === 2 && 'items-end lg:grid-cols-2')}>{children}</div>
     </div>
   )
 }

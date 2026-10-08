@@ -21,7 +21,7 @@ export function appTypeLines(appTypes: PracticeConnection['appTypes']) {
 
 export function MultiLine({ lines }: { lines: ReadonlyArray<string> }) {
   return (
-    <span className="flex flex-col gap-1">
+    <span className="flex flex-col leading-[22px]">
       {lines.map((line) => (
         <span key={line}>{line}</span>
       ))}

@@ -118,7 +118,9 @@ export function PracticeConnectionWizard({ mode, practice, step, onStepChange }:
   const copy = COPY[mode]
   const form = useForm<WizardValues>({
     resolver: zodResolver(wizardSchema),
-    mode: 'onTouched',
+    // revalidate as the user types once a step has been checked, so a fixed error clears before
+    // the next click (clearing on blur shifted the buttons under the pointer mid-click)
+    mode: 'onChange',
     defaultValues: mode === 'edit' ? editDefaults() : EMPTY_VALUES,
   })
   const values = useWatch({ control: form.control })
@@ -198,22 +200,27 @@ export function PracticeConnectionWizard({ mode, practice, step, onStepChange }:
             else void next()
           }}
         >
-          <h3 className="text-heading font-semibold text-foreground">{heading.title}</h3>
+          <h3 className="-mt-1 text-heading font-semibold text-foreground">{heading.title}</h3>
           {heading.subtitle ? <p className="mt-[11px] text-md text-muted-foreground">{heading.subtitle}</p> : null}
 
           <DetailList
             title={step === 'ehr' ? 'Practice Details' : undefined}
             items={summaryItems}
-            className={cn('-mx-[11px] mt-[27px] [&_h3]:mb-[17px] [&_h3]:font-medium', !heading.subtitle && 'mt-[15px]')}
+            className={cn('-ml-[11px] -mr-[41px] mt-[27px] [&_h3]:mb-[17px] [&_h3]:font-medium', !heading.subtitle && 'mt-[15px]')}
           />
 
-          {step === 'ehr' ? <EhrField control={form.control} onChange={() => {
-            form.setValue('patientConnection', '')
-            form.setValue('providerConnection', '')
-          }} /> : null}
+          {step === 'ehr' ? (
+            <EhrField
+              control={form.control}
+              onChange={() => {
+                form.setValue('patientConnection', '')
+                form.setValue('providerConnection', '')
+              }}
+            />
+          ) : null}
 
           {step === 'app-types' ? (
-            <fieldset className="mt-[29px]">
+            <fieldset className="mt-[27px]">
               <legend className="text-heading font-medium text-foreground">
                 EHR Type
                 <span className="text-destructive" aria-hidden>
@@ -223,7 +230,7 @@ export function PracticeConnectionWizard({ mode, practice, step, onStepChange }:
               <p className="mt-[11px] text-md text-muted-foreground">
                 Enabling an app type will allow you to add a connection of the specific EHR.
               </p>
-              <div className="mt-[29px] flex flex-col gap-[13px]">
+              <div className="mt-[28px] -mr-[41px] flex flex-col gap-[13px]">
                 <AppTypeRow control={form.control} type="patient" ehr={ehr} onDisable={() => form.setValue('patientConnection', '')} />
                 <AppTypeRow control={form.control} type="provider" ehr={ehr} onDisable={() => form.setValue('providerConnection', '')} />
               </div>
@@ -243,7 +250,7 @@ export function PracticeConnectionWizard({ mode, practice, step, onStepChange }:
               required
               placeholder="Enter the practice ID"
               description="Enter the Practice ID of the connection"
-              className="mt-[30px] w-[537px] max-w-full"
+              className="mt-[27px] w-[537px] max-w-full"
             />
           ) : null}
 
@@ -274,7 +281,7 @@ function EhrField({ control, onChange }: { control: Control<WizardValues>; onCha
       control={control}
       name="ehr"
       render={({ field }) => (
-        <FormItem className="mt-[38px] gap-[7px]">
+        <FormItem className="mt-[27px] gap-[7px]">
           <FormLabel className="text-lg font-semibold text-foreground">
             EHR Name
             <span className="-ml-1.5 text-destructive" aria-hidden>
@@ -339,7 +346,7 @@ function AppTypeRow({ control, type, ehr, onDisable }: AppTypeRowProps) {
   const options = ehr ? CONNECTION_OPTIONS[ehr][type] : []
 
   return (
-    <div className="grid gap-4 bg-panel px-[27px] py-[22px] lg:grid-cols-[462px_minmax(0,624px)] lg:gap-0">
+    <div className="grid gap-4 bg-panel px-[27px] pt-5 pb-4 lg:grid-cols-[462px_minmax(0,624px)] lg:gap-0">
       <FormField
         control={control}
         name={enabledName}
