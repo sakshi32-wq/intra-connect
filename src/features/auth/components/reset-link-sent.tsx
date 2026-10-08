@@ -23,7 +23,7 @@ export function ResetLinkSent({ email }: { email?: string }) {
 
   return (
     <div className="flex flex-col items-center text-center">
-      <SuccessIcon />
+      <SuccessIcon size="lg" />
       <h1
         ref={headingRef}
         tabIndex={-1}
