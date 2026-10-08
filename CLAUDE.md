@@ -33,4 +33,11 @@ TanStack Start (React, TS strict) · TanStack Router (file-based, zod `validateS
 - Mutations really mutate the in-memory db and invalidate related queries.
 - Table state (filters, pagination, sorting, search) lives in URL search params, validated with zod.
 - Don't hand-write components shadcn already provides. Translate Figma design-context output into shadcn + Tailwind idioms; never paste absolute-positioned output.
-- No `any`, no unused/demo code. `pnpm build` and `tsc --noEmit` must pass.
+- No `any`, no unused/demo code. `pnpm typecheck`, `pnpm lint` and `pnpm build` must pass.
+- SSR is off by default (`src/start.ts` → `defaultSsr: false`): the mock db and session live in the browser.
+- Import alias is `#/` (e.g. `#/components/ui/button`). Forms use shadcn `form` + react-hook-form + zod.
+
+## After every `pnpm dlx shadcn@latest add …`
+1. Rewrite `import { cn } from "cn"` → `import { cn } from "#/lib/utils"` in the new files. Our `cn` (`src/lib/utils.ts`) is configured with the custom font-size/shadow scales; the bare `cn` package would drop e.g. `text-title` when merged with a text colour. Add new custom scales to `src/lib/utils.ts` too.
+2. Revert anything the CLI appends to `src/styles/app.css` (it adds `.dark` sidebar vars and `@custom-variant dark`; the design has no dark theme).
+3. `src/components/ui/**` is excluded from ESLint — keep it as upstream ships it, apart from step 1 and design-driven variant changes.

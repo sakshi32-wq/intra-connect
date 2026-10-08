@@ -15,6 +15,12 @@ export default [
     },
   },
   {
-    ignores: ['eslint.config.js', 'prettier.config.js'],
+    // shadcn-generated components stay as upstream ships them
+    ignores: [
+      'eslint.config.js',
+      'prettier.config.js',
+      'src/components/ui/**',
+      'src/routeTree.gen.ts',
+    ],
   },
 ]

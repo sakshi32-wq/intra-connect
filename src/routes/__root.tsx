@@ -6,6 +6,8 @@ import {
 } from '@tanstack/react-router'
 import type { QueryClient } from '@tanstack/react-query'
 
+import { Toaster } from '../components/ui/sonner'
+import { TooltipProvider } from '../components/ui/tooltip'
 import appCss from '../styles/app.css?url'
 
 interface RouterContext {
@@ -35,7 +37,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        {children}
+        <TooltipProvider>{children}</TooltipProvider>
+        <Toaster position="top-right" />
         <Suspense>
           <Devtools />
         </Suspense>

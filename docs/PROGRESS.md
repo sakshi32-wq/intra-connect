@@ -1,6 +1,6 @@
 # Progress
 
-**In progress:** Phase 1 — add shadcn components
+**In progress:** Phase 1 — copy images to public/ + logo placeholder
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -19,7 +19,7 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 ## Phase 1 — Foundation
 - [x] Scaffold TanStack Start (`npx @tanstack/cli@latest create`), pnpm, TS strict — SSR off by default (`src/start.ts`), devtools dev-only
 - [x] Tailwind v4 + shadcn init; theme tokens in `src/styles/app.css`; Inter font (self-hosted `@fontsource-variable/inter`)
-- [ ] shadcn components from COMPONENTS.md install list
+- [x] shadcn components from COMPONENTS.md install list (`form` instead of `field`, per brief); theme-aware `cn` in `src/lib/utils.ts`
 - [ ] Copy `docs/assets/images/*` → `public/images/`; logo placeholder (not exported — SCREEN_MAP Q1)
 - [ ] Mock layer: `src/mocks/db.ts` (latency 300–600 ms) + `src/mocks/data/*`
 - [ ] `QueryClient` in router context; 404 page; `clean-demos`
