@@ -1,8 +1,8 @@
 # Progress
 
-**In progress:** ⏸ Connection UI merged — waiting for user review. User wants to go feature by feature (2026-10-08).
+**In progress:** ⏸ Practices UI merged (list, add, detail tabs, webhooks) — waiting for user review. Going feature by feature (2026-10-08).
 
-> **Built but not merged yet** (git branches from the parallel run, merge one feature at a time on request): Practices list + Add practice → `worktree-wf_034e093a-446-2` · Webhooks → `worktree-wf_034e093a-446-4` · Logs → `worktree-wf_034e093a-446-5`. **Not built** (agents hit the session limit): Practice detail (profile/providers/patients/connection wizards) and Setting — re-run those agents later.
+> **Built but not merged yet** (git branches from the parallel run, merge one feature at a time on request): Logs → `worktree-wf_034e093a-446-5`. **Not built** (agent hit the session limit): Setting — re-run later.
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -52,16 +52,17 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 - [ ] ⏸ Review
 
 ## Phase 6 — Practices: list + add
-- [ ] Practices list `/practices` · Frame 2 row menu · 52 empty state
-- [ ] "Logs", 41, 54 Add practice `/practices/new?step`
+- [x] Practices list `/practices` · Frame 2 row menu · 52 empty state
+- [x] "Logs", 41, 54 Add practice `/practices/new?step`
 - [ ] ⏸ Review
 
 ## Phase 7 — Practice detail (replaces the brief's "profile-menu pages": Frame 2 is the practice row menu)
-- [ ] `$practiceId` layout (header + 5 pill tabs)
-- [ ] 22–24 Profile (view, edit, success)
-- [ ] 27, 28 Connection tab (empty, populated) · 47–51 attach wizard · 29–33 edit wizard
-- [ ] 34, 46 Webhooks tab · 35 webhook detail · 42–45 add webhook · 36–39 edit webhook
-- [ ] 25 Providers · 26 Patients
+- [x] `$practiceId` layout (header + 5 pill tabs)
+- [x] 22–24 Profile (view, edit, success)
+- [x] 27, 28 Connection tab (empty, populated) · 47–51 attach wizard · 29–33 edit wizard
+- [x] 34, 46 Webhooks tab · 35 webhook detail · 42–45 add webhook · 36–39 edit webhook
+- [x] 25 Providers · 26 Patients
+- [ ] "+ Add New Webhook" sits above the table instead of on the header tab row (34) — needs a header action slot in the practice layout
 - [ ] ⏸ Review
 
 ## Phase 8 — Logs
