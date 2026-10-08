@@ -1,6 +1,6 @@
 # Progress
 
-**In progress:** ⏸ Phase 1 review gate — waiting for user approval
+**In progress:** Phase 2 — Sign In (frame 1) + mock auth + route guard
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -23,7 +23,7 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 - [x] Copy `docs/assets/images/*` → `public/images/` (logo wordmark placeholder is built with the sidebar in Phase 3 — SCREEN_MAP Q1)
 - [x] Mock layer: `src/mocks/db.ts` (latency 300–600 ms) + seeded `src/mocks/data/*` + feature `types.ts`; ESLint blocks `#/mocks` imports outside `src/features/*/api.ts`
 - [x] `QueryClient` in router context; 404 page (`src/components/not-found.tsx`, not designed — built from tokens); favicon; `clean-demos` (nothing to clean)
-- [ ] ⏸ Review
+- [x] ⏸ Review — approved 2026-10-08
 
 ## Phase 2 — Auth
 - [ ] 1 Sign In `/login` · mock auth (valid email + 6+ char password), session in localStorage, `beforeLoad` guard → `/login`
