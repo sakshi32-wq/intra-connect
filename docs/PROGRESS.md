@@ -1,6 +1,6 @@
 # Progress
 
-**In progress:** Phase 2 — Sign In (frame 1) + mock auth + route guard
+**In progress:** Phase 2 — code review of auth
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -26,9 +26,9 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 - [x] ⏸ Review — approved 2026-10-08
 
 ## Phase 2 — Auth
-- [ ] 1 Sign In `/login` · mock auth (valid email + 6+ char password), session in localStorage, `beforeLoad` guard → `/login`
-- [ ] 2 Sign Up `/signup`
-- [ ] 3, 4 Forgot password `/forgot-password?step=request|sent`
+- [x] 1 Sign In `/login` · mock auth (valid email + 6+ char password), session in localStorage (sessionStorage when Remember me is off), `beforeLoad` guard → `/login?redirect=`
+- [x] 2 Sign Up `/signup` (live password rules, duplicate-email error)
+- [x] 3, 4 Forgot password `/forgot-password?step=request|sent` (+ Resend toast, Back to Sign In)
 - [ ] ⏸ Review (Playwright vs screenshots)
 
 ## Phase 3 — App shell

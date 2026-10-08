@@ -1,12 +1,8 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@tanstack/react-router'
 
-// Temporary landing page; Phase 2 replaces it with a redirect to /overview or /login.
-export const Route = createFileRoute('/')({ component: Home })
-
-function Home() {
-  return (
-    <main className="grid min-h-screen place-items-center">
-      <h1 className="text-title font-semibold">IntraConnect</h1>
-    </main>
-  )
-}
+// The _app guard sends signed-out visitors on to /login.
+export const Route = createFileRoute('/')({
+  beforeLoad: () => {
+    throw redirect({ to: '/overview' })
+  },
+})

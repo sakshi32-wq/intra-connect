@@ -3,6 +3,7 @@
 
 import { HttpError } from '#/lib/http-error'
 import type { Page } from '#/lib/pagination'
+import { createAuthService } from './auth'
 import { connectionsSeed } from './data/connections'
 import { logsSeed } from './data/logs'
 import {
@@ -18,14 +19,7 @@ import {
   organisationSeed,
 } from './data/settings'
 import { webhooksSeed } from './data/webhooks'
-
-const MIN_LATENCY_MS = 300
-const MAX_LATENCY_MS = 600
-
-function latency() {
-  const ms = MIN_LATENCY_MS + Math.random() * (MAX_LATENCY_MS - MIN_LATENCY_MS)
-  return new Promise<void>((resolve) => setTimeout(resolve, ms))
-}
+import { latency } from './latency'
 
 let idCounter = 0
 export function createId(prefix: string) {
@@ -132,4 +126,5 @@ export const db = {
   mfaDevices: createTable(mfaDevicesSeed, byId, 'MFA device'),
   organisation: createRecord(organisationSeed),
   currentUser: createRecord(currentUserSeed),
+  auth: createAuthService(orgUsersSeed.map((user) => user.email)),
 }

@@ -92,6 +92,7 @@
   --auth-primary: #009AC1;
   --auth-link: #00A3CC;
   --auth-input-border: #7F7F7F;
+  --auth-toggle: #1EA64B;               /* Remember-me switch, frame 1 (1175,645) */
   --auth-gradient: linear-gradient(61deg, #3D5B8E 0%, #268AB8 50%, #0EB9E3 100%);
 
   /* elevation (fitted) */
@@ -170,6 +171,7 @@
   --color-auth-primary: var(--auth-primary);
   --color-auth-link: var(--auth-link);
   --color-auth-input-border: var(--auth-input-border);
+  --color-auth-toggle: var(--auth-toggle);
 
   --radius-sm: var(--radius);                  /* 4  */
   --radius-md: var(--radius);                  /* 4  shadcn default for buttons/inputs */
