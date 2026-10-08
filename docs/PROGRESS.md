@@ -1,6 +1,8 @@
 # Progress
 
-**In progress:** Phases 5–10 — UI for all remaining sections, built in parallel worktrees (workflow `build-remaining-ui`), then merge + visual QA. User asked to complete the UI without per-phase gates (2026-10-08).
+**In progress:** ⏸ Connection UI merged — waiting for user review. User wants to go feature by feature (2026-10-08).
+
+> **Built but not merged yet** (git branches from the parallel run, merge one feature at a time on request): Practices list + Add practice → `worktree-wf_034e093a-446-2` · Webhooks → `worktree-wf_034e093a-446-4` · Logs → `worktree-wf_034e093a-446-5`. **Not built** (agents hit the session limit): Practice detail (profile/providers/patients/connection wizards) and Setting — re-run those agents later.
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -43,10 +45,10 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 - [x] Review — user: "just complete the UI"; shared components + route skeleton committed (2234281, cffee6c)
 
 ## Phase 5 — Connection
-- [ ] Connection, 56, 57 list `/connections` (status filter, search, app type, pagination) · 53 empty state
-- [ ] 58–62 Add connection wizard `/connections/new?step`
-- [ ] 63 Connection detail `/connections/$connectionId`
-- [ ] 64–67 Edit connection wizard `/connections/$connectionId/edit?step`
+- [x] Connection, 56, 57 list `/connections` (status filter, search, app type, pagination — local state) · 53 empty state when the filtered list is empty
+- [x] 58–62 Add connection wizard `/connections/new?step`
+- [x] 63 Connection detail `/connections/$connectionId`
+- [x] 64–67 Edit connection wizard `/connections/$connectionId/edit?step`
 - [ ] ⏸ Review
 
 ## Phase 6 — Practices: list + add
