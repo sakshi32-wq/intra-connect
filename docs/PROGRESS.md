@@ -1,10 +1,11 @@
 # Progress
 
-**In progress:** Phase 3 — code review of the shell
+**In progress:** Phase 4 — Overview UI
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
 > Design source = local exports in `docs/screens/` + `docs/assets/images/` (see CLAUDE.md → Tools & design source). Figma MCP is unavailable (View seat, ~20 calls/month) — do not call it. Colours are sampled from the PNGs with a script, never eyeballed. Icons = lucide-react.
+> **UI-only mode (2026-10-08):** build screens with static sample data, no data integration — see CLAUDE.md → Current mode.
 > Routes, states and design-error corrections: `docs/SCREEN_MAP.md`. Components + shadcn install list: `docs/COMPONENTS.md`. Tokens: `docs/TOKENS.md`.
 
 ## Phase 0 — Discovery (no app code)
@@ -35,7 +36,7 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 ## Phase 3 — App shell
 - [x] `_app` layout: AppSidebar (nav, Documentation/API Reference links, footer env/org switchers + user card with Sign out), PageHeader (white + navy variants), section placeholders for Connection/Practices/Logs/Setting; sidebar 372px at 1920 → 260px min at 1280
 - [ ] Add "User Details" to the user menu once `/settings/user-details` exists (Phase 9)
-- [ ] ⏸ Review
+- [x] Review — user switched to UI-only mode (2026-10-08); shell code review stopped
 
 ## Phase 4 — Overview
 - [ ] Overview `/overview?step` (onboarding stepper + diagram)

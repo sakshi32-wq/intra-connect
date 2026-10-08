@@ -28,6 +28,13 @@ The Figma account is a View seat limited to ~20 Figma MCP calls/month (already e
 ## Stack
 TanStack Start (React, TS strict) · TanStack Router (file-based, zod `validateSearch`, loaders use `queryClient.ensureQueryData`) · TanStack Query (`queryOptions` factories, mutations + invalidation) · shadcn/ui + Tailwind v4 · react-hook-form + zod · lucide-react · pnpm.
 
+## Current mode: UI only (user decision 2026-10-08)
+Build the screens' UI only — **no data integration** for new screens:
+- Show static sample data from `src/features/<feature>/sample-data.ts` (values from the Figma frames / SCREEN_MAP). Don't add `api.ts` queries/mutations, mock-db wiring, loaders, or URL-driven table logic (filtering/pagination/sorting in search params).
+- Interactions are UI-level only: local component state, navigation between screens/steps (wizard `step` search params are fine), client-side form validation, toasts. Submit buttons just move to the next UI state.
+- The existing auth flow, session guard and shell (`me`/organisation queries) stay as they are.
+- The architecture rules below apply when integration resumes.
+
 ## Architecture rules
 - Data access only via `src/features/<feature>/api.ts` (`queryOptions` + mutation fns) → `src/mocks/db.ts` (in-memory, 300–600 ms fake latency). Components never import `src/mocks/*` directly.
 - Mutations really mutate the in-memory db and invalidate related queries.
