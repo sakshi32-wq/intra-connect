@@ -1,6 +1,6 @@
 # Progress
 
-**In progress:** ⏸ Phase 2 review gate — waiting for user approval
+**In progress:** Phase 3 — app shell (sidebar, header, user menu)
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -30,7 +30,7 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 - [x] 2 Sign Up `/signup` (live password rules, duplicate-email error)
 - [x] 3, 4 Forgot password `/forgot-password?step=request|sent` (+ Resend toast, Back to Sign In)
 - [x] Playwright vs screenshots (frames 1–4) + multi-agent code review: 18 confirmed findings, 17 fixed, 1 (contrast): user chose to keep design colours — logged as contrast debt in TOKENS.md
-- [ ] ⏸ Review (Playwright vs screenshots)
+- [x] ⏸ Review — approved 2026-10-08
 
 ## Phase 3 — App shell
 - [ ] `_app` layout: AppSidebar (nav, Documentation/API Reference links, footer env/org switchers + user card), PageHeader (white + navy variants)
