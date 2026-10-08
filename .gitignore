@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.output/
+.vinxi/
+.tanstack/
+.nitro/
+*.local
+.env*
+!.env.example
+# Figma reference screenshots (re-fetchable via Figma MCP)
+design/screens/
+# Playwright comparison output
+design/compare/
+.playwright-mcp/
