@@ -13,13 +13,42 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as AppOverviewRouteImport } from './routes/_app/overview'
+import { Route as AppSettingsRouteRouteImport } from './routes/_app/settings/route'
 import { Route as AuthForgotPasswordRouteImport } from './routes/_auth/forgot-password'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as AuthSignupRouteImport } from './routes/_auth/signup'
 import { Route as AppConnectionsIndexRouteImport } from './routes/_app/connections/index'
+import { Route as AppConnectionsNewRouteImport } from './routes/_app/connections/new'
 import { Route as AppLogsIndexRouteImport } from './routes/_app/logs/index'
 import { Route as AppPracticesIndexRouteImport } from './routes/_app/practices/index'
+import { Route as AppPracticesPracticeIdRouteRouteImport } from './routes/_app/practices/$practiceId/route'
+import { Route as AppPracticesNewRouteImport } from './routes/_app/practices/new'
 import { Route as AppSettingsIndexRouteImport } from './routes/_app/settings/index'
+import { Route as AppSettingsOrganisationRouteImport } from './routes/_app/settings/organisation'
+import { Route as AppSettingsUserDetailsRouteRouteImport } from './routes/_app/settings/user-details/route'
+import { Route as AppSettingsUsersRouteRouteImport } from './routes/_app/settings/users/route'
+import { Route as AppConnectionsConnectionIdIndexRouteImport } from './routes/_app/connections/$connectionId/index'
+import { Route as AppConnectionsConnectionIdEditRouteImport } from './routes/_app/connections/$connectionId/edit'
+import { Route as AppPracticesPracticeIdIndexRouteImport } from './routes/_app/practices/$practiceId/index'
+import { Route as AppPracticesPracticeIdConnectionRouteRouteImport } from './routes/_app/practices/$practiceId/connection/route'
+import { Route as AppPracticesPracticeIdPatientsRouteImport } from './routes/_app/practices/$practiceId/patients'
+import { Route as AppPracticesPracticeIdProfileRouteRouteImport } from './routes/_app/practices/$practiceId/profile/route'
+import { Route as AppPracticesPracticeIdProvidersRouteImport } from './routes/_app/practices/$practiceId/providers'
+import { Route as AppPracticesPracticeIdWebhooksRouteRouteImport } from './routes/_app/practices/$practiceId/webhooks/route'
+import { Route as AppSettingsUserDetailsIndexRouteImport } from './routes/_app/settings/user-details/index'
+import { Route as AppSettingsUserDetailsChangePasswordRouteImport } from './routes/_app/settings/user-details/change-password'
+import { Route as AppSettingsUserDetailsMfaRouteImport } from './routes/_app/settings/user-details/mfa'
+import { Route as AppSettingsUsersIndexRouteImport } from './routes/_app/settings/users/index'
+import { Route as AppSettingsUsersInviteRouteImport } from './routes/_app/settings/users/invite'
+import { Route as AppPracticesPracticeIdConnectionIndexRouteImport } from './routes/_app/practices/$practiceId/connection/index'
+import { Route as AppPracticesPracticeIdConnectionAttachRouteImport } from './routes/_app/practices/$practiceId/connection/attach'
+import { Route as AppPracticesPracticeIdConnectionEditRouteImport } from './routes/_app/practices/$practiceId/connection/edit'
+import { Route as AppPracticesPracticeIdProfileIndexRouteImport } from './routes/_app/practices/$practiceId/profile/index'
+import { Route as AppPracticesPracticeIdProfileEditRouteImport } from './routes/_app/practices/$practiceId/profile/edit'
+import { Route as AppPracticesPracticeIdWebhooksIndexRouteImport } from './routes/_app/practices/$practiceId/webhooks/index'
+import { Route as AppPracticesPracticeIdWebhooksNewRouteImport } from './routes/_app/practices/$practiceId/webhooks/new'
+import { Route as AppPracticesPracticeIdWebhooksWebhookIdIndexRouteImport } from './routes/_app/practices/$practiceId/webhooks/$webhookId/index'
+import { Route as AppPracticesPracticeIdWebhooksWebhookIdEditRouteImport } from './routes/_app/practices/$practiceId/webhooks/$webhookId/edit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -37,6 +66,11 @@ const AuthRoute = AuthRouteImport.update({
 const AppOverviewRoute = AppOverviewRouteImport.update({
   id: '/overview',
   path: '/overview',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsRouteRoute = AppSettingsRouteRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => AppRoute,
 } as any)
 const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
@@ -59,6 +93,11 @@ const AppConnectionsIndexRoute = AppConnectionsIndexRouteImport.update({
   path: '/connections/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppConnectionsNewRoute = AppConnectionsNewRouteImport.update({
+  id: '/connections/new',
+  path: '/connections/new',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppLogsIndexRoute = AppLogsIndexRouteImport.update({
   id: '/logs/',
   path: '/logs/',
@@ -69,22 +108,208 @@ const AppPracticesIndexRoute = AppPracticesIndexRouteImport.update({
   path: '/practices/',
   getParentRoute: () => AppRoute,
 } as any)
-const AppSettingsIndexRoute = AppSettingsIndexRouteImport.update({
-  id: '/settings/',
-  path: '/settings/',
+const AppPracticesPracticeIdRouteRoute =
+  AppPracticesPracticeIdRouteRouteImport.update({
+    id: '/practices/$practiceId',
+    path: '/practices/$practiceId',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppPracticesNewRoute = AppPracticesNewRouteImport.update({
+  id: '/practices/new',
+  path: '/practices/new',
   getParentRoute: () => AppRoute,
 } as any)
+const AppSettingsIndexRoute = AppSettingsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppSettingsRouteRoute,
+} as any)
+const AppSettingsOrganisationRoute = AppSettingsOrganisationRouteImport.update({
+  id: '/organisation',
+  path: '/organisation',
+  getParentRoute: () => AppSettingsRouteRoute,
+} as any)
+const AppSettingsUserDetailsRouteRoute =
+  AppSettingsUserDetailsRouteRouteImport.update({
+    id: '/user-details',
+    path: '/user-details',
+    getParentRoute: () => AppSettingsRouteRoute,
+  } as any)
+const AppSettingsUsersRouteRoute = AppSettingsUsersRouteRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AppSettingsRouteRoute,
+} as any)
+const AppConnectionsConnectionIdIndexRoute =
+  AppConnectionsConnectionIdIndexRouteImport.update({
+    id: '/connections/$connectionId/',
+    path: '/connections/$connectionId/',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppConnectionsConnectionIdEditRoute =
+  AppConnectionsConnectionIdEditRouteImport.update({
+    id: '/connections/$connectionId/edit',
+    path: '/connections/$connectionId/edit',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppPracticesPracticeIdIndexRoute =
+  AppPracticesPracticeIdIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AppPracticesPracticeIdRouteRoute,
+  } as any)
+const AppPracticesPracticeIdConnectionRouteRoute =
+  AppPracticesPracticeIdConnectionRouteRouteImport.update({
+    id: '/connection',
+    path: '/connection',
+    getParentRoute: () => AppPracticesPracticeIdRouteRoute,
+  } as any)
+const AppPracticesPracticeIdPatientsRoute =
+  AppPracticesPracticeIdPatientsRouteImport.update({
+    id: '/patients',
+    path: '/patients',
+    getParentRoute: () => AppPracticesPracticeIdRouteRoute,
+  } as any)
+const AppPracticesPracticeIdProfileRouteRoute =
+  AppPracticesPracticeIdProfileRouteRouteImport.update({
+    id: '/profile',
+    path: '/profile',
+    getParentRoute: () => AppPracticesPracticeIdRouteRoute,
+  } as any)
+const AppPracticesPracticeIdProvidersRoute =
+  AppPracticesPracticeIdProvidersRouteImport.update({
+    id: '/providers',
+    path: '/providers',
+    getParentRoute: () => AppPracticesPracticeIdRouteRoute,
+  } as any)
+const AppPracticesPracticeIdWebhooksRouteRoute =
+  AppPracticesPracticeIdWebhooksRouteRouteImport.update({
+    id: '/webhooks',
+    path: '/webhooks',
+    getParentRoute: () => AppPracticesPracticeIdRouteRoute,
+  } as any)
+const AppSettingsUserDetailsIndexRoute =
+  AppSettingsUserDetailsIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AppSettingsUserDetailsRouteRoute,
+  } as any)
+const AppSettingsUserDetailsChangePasswordRoute =
+  AppSettingsUserDetailsChangePasswordRouteImport.update({
+    id: '/change-password',
+    path: '/change-password',
+    getParentRoute: () => AppSettingsUserDetailsRouteRoute,
+  } as any)
+const AppSettingsUserDetailsMfaRoute =
+  AppSettingsUserDetailsMfaRouteImport.update({
+    id: '/mfa',
+    path: '/mfa',
+    getParentRoute: () => AppSettingsUserDetailsRouteRoute,
+  } as any)
+const AppSettingsUsersIndexRoute = AppSettingsUsersIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppSettingsUsersRouteRoute,
+} as any)
+const AppSettingsUsersInviteRoute = AppSettingsUsersInviteRouteImport.update({
+  id: '/invite',
+  path: '/invite',
+  getParentRoute: () => AppSettingsUsersRouteRoute,
+} as any)
+const AppPracticesPracticeIdConnectionIndexRoute =
+  AppPracticesPracticeIdConnectionIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AppPracticesPracticeIdConnectionRouteRoute,
+  } as any)
+const AppPracticesPracticeIdConnectionAttachRoute =
+  AppPracticesPracticeIdConnectionAttachRouteImport.update({
+    id: '/attach',
+    path: '/attach',
+    getParentRoute: () => AppPracticesPracticeIdConnectionRouteRoute,
+  } as any)
+const AppPracticesPracticeIdConnectionEditRoute =
+  AppPracticesPracticeIdConnectionEditRouteImport.update({
+    id: '/edit',
+    path: '/edit',
+    getParentRoute: () => AppPracticesPracticeIdConnectionRouteRoute,
+  } as any)
+const AppPracticesPracticeIdProfileIndexRoute =
+  AppPracticesPracticeIdProfileIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AppPracticesPracticeIdProfileRouteRoute,
+  } as any)
+const AppPracticesPracticeIdProfileEditRoute =
+  AppPracticesPracticeIdProfileEditRouteImport.update({
+    id: '/edit',
+    path: '/edit',
+    getParentRoute: () => AppPracticesPracticeIdProfileRouteRoute,
+  } as any)
+const AppPracticesPracticeIdWebhooksIndexRoute =
+  AppPracticesPracticeIdWebhooksIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AppPracticesPracticeIdWebhooksRouteRoute,
+  } as any)
+const AppPracticesPracticeIdWebhooksNewRoute =
+  AppPracticesPracticeIdWebhooksNewRouteImport.update({
+    id: '/new',
+    path: '/new',
+    getParentRoute: () => AppPracticesPracticeIdWebhooksRouteRoute,
+  } as any)
+const AppPracticesPracticeIdWebhooksWebhookIdIndexRoute =
+  AppPracticesPracticeIdWebhooksWebhookIdIndexRouteImport.update({
+    id: '/$webhookId/',
+    path: '/$webhookId/',
+    getParentRoute: () => AppPracticesPracticeIdWebhooksRouteRoute,
+  } as any)
+const AppPracticesPracticeIdWebhooksWebhookIdEditRoute =
+  AppPracticesPracticeIdWebhooksWebhookIdEditRouteImport.update({
+    id: '/$webhookId/edit',
+    path: '/$webhookId/edit',
+    getParentRoute: () => AppPracticesPracticeIdWebhooksRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/settings': typeof AppSettingsRouteRouteWithChildren
   '/overview': typeof AppOverviewRoute
   '/forgot-password': typeof AuthForgotPasswordRoute
   '/login': typeof AuthLoginRoute
   '/signup': typeof AuthSignupRoute
+  '/practices/$practiceId': typeof AppPracticesPracticeIdRouteRouteWithChildren
+  '/settings/user-details': typeof AppSettingsUserDetailsRouteRouteWithChildren
+  '/settings/users': typeof AppSettingsUsersRouteRouteWithChildren
+  '/connections/new': typeof AppConnectionsNewRoute
+  '/practices/new': typeof AppPracticesNewRoute
+  '/settings/organisation': typeof AppSettingsOrganisationRoute
   '/connections/': typeof AppConnectionsIndexRoute
   '/logs/': typeof AppLogsIndexRoute
   '/practices/': typeof AppPracticesIndexRoute
   '/settings/': typeof AppSettingsIndexRoute
+  '/practices/$practiceId/connection': typeof AppPracticesPracticeIdConnectionRouteRouteWithChildren
+  '/practices/$practiceId/profile': typeof AppPracticesPracticeIdProfileRouteRouteWithChildren
+  '/practices/$practiceId/webhooks': typeof AppPracticesPracticeIdWebhooksRouteRouteWithChildren
+  '/connections/$connectionId/edit': typeof AppConnectionsConnectionIdEditRoute
+  '/practices/$practiceId/patients': typeof AppPracticesPracticeIdPatientsRoute
+  '/practices/$practiceId/providers': typeof AppPracticesPracticeIdProvidersRoute
+  '/settings/user-details/change-password': typeof AppSettingsUserDetailsChangePasswordRoute
+  '/settings/user-details/mfa': typeof AppSettingsUserDetailsMfaRoute
+  '/settings/users/invite': typeof AppSettingsUsersInviteRoute
+  '/connections/$connectionId/': typeof AppConnectionsConnectionIdIndexRoute
+  '/practices/$practiceId/': typeof AppPracticesPracticeIdIndexRoute
+  '/settings/user-details/': typeof AppSettingsUserDetailsIndexRoute
+  '/settings/users/': typeof AppSettingsUsersIndexRoute
+  '/practices/$practiceId/connection/attach': typeof AppPracticesPracticeIdConnectionAttachRoute
+  '/practices/$practiceId/connection/edit': typeof AppPracticesPracticeIdConnectionEditRoute
+  '/practices/$practiceId/profile/edit': typeof AppPracticesPracticeIdProfileEditRoute
+  '/practices/$practiceId/webhooks/new': typeof AppPracticesPracticeIdWebhooksNewRoute
+  '/practices/$practiceId/connection/': typeof AppPracticesPracticeIdConnectionIndexRoute
+  '/practices/$practiceId/profile/': typeof AppPracticesPracticeIdProfileIndexRoute
+  '/practices/$practiceId/webhooks/': typeof AppPracticesPracticeIdWebhooksIndexRoute
+  '/practices/$practiceId/webhooks/$webhookId/edit': typeof AppPracticesPracticeIdWebhooksWebhookIdEditRoute
+  '/practices/$practiceId/webhooks/$webhookId/': typeof AppPracticesPracticeIdWebhooksWebhookIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -92,37 +317,117 @@ export interface FileRoutesByTo {
   '/forgot-password': typeof AuthForgotPasswordRoute
   '/login': typeof AuthLoginRoute
   '/signup': typeof AuthSignupRoute
+  '/connections/new': typeof AppConnectionsNewRoute
+  '/practices/new': typeof AppPracticesNewRoute
+  '/settings/organisation': typeof AppSettingsOrganisationRoute
   '/connections': typeof AppConnectionsIndexRoute
   '/logs': typeof AppLogsIndexRoute
   '/practices': typeof AppPracticesIndexRoute
   '/settings': typeof AppSettingsIndexRoute
+  '/connections/$connectionId/edit': typeof AppConnectionsConnectionIdEditRoute
+  '/practices/$practiceId/patients': typeof AppPracticesPracticeIdPatientsRoute
+  '/practices/$practiceId/providers': typeof AppPracticesPracticeIdProvidersRoute
+  '/settings/user-details/change-password': typeof AppSettingsUserDetailsChangePasswordRoute
+  '/settings/user-details/mfa': typeof AppSettingsUserDetailsMfaRoute
+  '/settings/users/invite': typeof AppSettingsUsersInviteRoute
+  '/connections/$connectionId': typeof AppConnectionsConnectionIdIndexRoute
+  '/practices/$practiceId': typeof AppPracticesPracticeIdIndexRoute
+  '/settings/user-details': typeof AppSettingsUserDetailsIndexRoute
+  '/settings/users': typeof AppSettingsUsersIndexRoute
+  '/practices/$practiceId/connection/attach': typeof AppPracticesPracticeIdConnectionAttachRoute
+  '/practices/$practiceId/connection/edit': typeof AppPracticesPracticeIdConnectionEditRoute
+  '/practices/$practiceId/profile/edit': typeof AppPracticesPracticeIdProfileEditRoute
+  '/practices/$practiceId/webhooks/new': typeof AppPracticesPracticeIdWebhooksNewRoute
+  '/practices/$practiceId/connection': typeof AppPracticesPracticeIdConnectionIndexRoute
+  '/practices/$practiceId/profile': typeof AppPracticesPracticeIdProfileIndexRoute
+  '/practices/$practiceId/webhooks': typeof AppPracticesPracticeIdWebhooksIndexRoute
+  '/practices/$practiceId/webhooks/$webhookId/edit': typeof AppPracticesPracticeIdWebhooksWebhookIdEditRoute
+  '/practices/$practiceId/webhooks/$webhookId': typeof AppPracticesPracticeIdWebhooksWebhookIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_app': typeof AppRouteWithChildren
   '/_auth': typeof AuthRouteWithChildren
+  '/_app/settings': typeof AppSettingsRouteRouteWithChildren
   '/_app/overview': typeof AppOverviewRoute
   '/_auth/forgot-password': typeof AuthForgotPasswordRoute
   '/_auth/login': typeof AuthLoginRoute
   '/_auth/signup': typeof AuthSignupRoute
+  '/_app/practices/$practiceId': typeof AppPracticesPracticeIdRouteRouteWithChildren
+  '/_app/settings/user-details': typeof AppSettingsUserDetailsRouteRouteWithChildren
+  '/_app/settings/users': typeof AppSettingsUsersRouteRouteWithChildren
+  '/_app/connections/new': typeof AppConnectionsNewRoute
+  '/_app/practices/new': typeof AppPracticesNewRoute
+  '/_app/settings/organisation': typeof AppSettingsOrganisationRoute
   '/_app/connections/': typeof AppConnectionsIndexRoute
   '/_app/logs/': typeof AppLogsIndexRoute
   '/_app/practices/': typeof AppPracticesIndexRoute
   '/_app/settings/': typeof AppSettingsIndexRoute
+  '/_app/practices/$practiceId/connection': typeof AppPracticesPracticeIdConnectionRouteRouteWithChildren
+  '/_app/practices/$practiceId/profile': typeof AppPracticesPracticeIdProfileRouteRouteWithChildren
+  '/_app/practices/$practiceId/webhooks': typeof AppPracticesPracticeIdWebhooksRouteRouteWithChildren
+  '/_app/connections/$connectionId/edit': typeof AppConnectionsConnectionIdEditRoute
+  '/_app/practices/$practiceId/patients': typeof AppPracticesPracticeIdPatientsRoute
+  '/_app/practices/$practiceId/providers': typeof AppPracticesPracticeIdProvidersRoute
+  '/_app/settings/user-details/change-password': typeof AppSettingsUserDetailsChangePasswordRoute
+  '/_app/settings/user-details/mfa': typeof AppSettingsUserDetailsMfaRoute
+  '/_app/settings/users/invite': typeof AppSettingsUsersInviteRoute
+  '/_app/connections/$connectionId/': typeof AppConnectionsConnectionIdIndexRoute
+  '/_app/practices/$practiceId/': typeof AppPracticesPracticeIdIndexRoute
+  '/_app/settings/user-details/': typeof AppSettingsUserDetailsIndexRoute
+  '/_app/settings/users/': typeof AppSettingsUsersIndexRoute
+  '/_app/practices/$practiceId/connection/attach': typeof AppPracticesPracticeIdConnectionAttachRoute
+  '/_app/practices/$practiceId/connection/edit': typeof AppPracticesPracticeIdConnectionEditRoute
+  '/_app/practices/$practiceId/profile/edit': typeof AppPracticesPracticeIdProfileEditRoute
+  '/_app/practices/$practiceId/webhooks/new': typeof AppPracticesPracticeIdWebhooksNewRoute
+  '/_app/practices/$practiceId/connection/': typeof AppPracticesPracticeIdConnectionIndexRoute
+  '/_app/practices/$practiceId/profile/': typeof AppPracticesPracticeIdProfileIndexRoute
+  '/_app/practices/$practiceId/webhooks/': typeof AppPracticesPracticeIdWebhooksIndexRoute
+  '/_app/practices/$practiceId/webhooks/$webhookId/edit': typeof AppPracticesPracticeIdWebhooksWebhookIdEditRoute
+  '/_app/practices/$practiceId/webhooks/$webhookId/': typeof AppPracticesPracticeIdWebhooksWebhookIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/settings'
     | '/overview'
     | '/forgot-password'
     | '/login'
     | '/signup'
+    | '/practices/$practiceId'
+    | '/settings/user-details'
+    | '/settings/users'
+    | '/connections/new'
+    | '/practices/new'
+    | '/settings/organisation'
     | '/connections/'
     | '/logs/'
     | '/practices/'
     | '/settings/'
+    | '/practices/$practiceId/connection'
+    | '/practices/$practiceId/profile'
+    | '/practices/$practiceId/webhooks'
+    | '/connections/$connectionId/edit'
+    | '/practices/$practiceId/patients'
+    | '/practices/$practiceId/providers'
+    | '/settings/user-details/change-password'
+    | '/settings/user-details/mfa'
+    | '/settings/users/invite'
+    | '/connections/$connectionId/'
+    | '/practices/$practiceId/'
+    | '/settings/user-details/'
+    | '/settings/users/'
+    | '/practices/$practiceId/connection/attach'
+    | '/practices/$practiceId/connection/edit'
+    | '/practices/$practiceId/profile/edit'
+    | '/practices/$practiceId/webhooks/new'
+    | '/practices/$practiceId/connection/'
+    | '/practices/$practiceId/profile/'
+    | '/practices/$practiceId/webhooks/'
+    | '/practices/$practiceId/webhooks/$webhookId/edit'
+    | '/practices/$practiceId/webhooks/$webhookId/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -130,23 +435,74 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/login'
     | '/signup'
+    | '/connections/new'
+    | '/practices/new'
+    | '/settings/organisation'
     | '/connections'
     | '/logs'
     | '/practices'
     | '/settings'
+    | '/connections/$connectionId/edit'
+    | '/practices/$practiceId/patients'
+    | '/practices/$practiceId/providers'
+    | '/settings/user-details/change-password'
+    | '/settings/user-details/mfa'
+    | '/settings/users/invite'
+    | '/connections/$connectionId'
+    | '/practices/$practiceId'
+    | '/settings/user-details'
+    | '/settings/users'
+    | '/practices/$practiceId/connection/attach'
+    | '/practices/$practiceId/connection/edit'
+    | '/practices/$practiceId/profile/edit'
+    | '/practices/$practiceId/webhooks/new'
+    | '/practices/$practiceId/connection'
+    | '/practices/$practiceId/profile'
+    | '/practices/$practiceId/webhooks'
+    | '/practices/$practiceId/webhooks/$webhookId/edit'
+    | '/practices/$practiceId/webhooks/$webhookId'
   id:
     | '__root__'
     | '/'
     | '/_app'
     | '/_auth'
+    | '/_app/settings'
     | '/_app/overview'
     | '/_auth/forgot-password'
     | '/_auth/login'
     | '/_auth/signup'
+    | '/_app/practices/$practiceId'
+    | '/_app/settings/user-details'
+    | '/_app/settings/users'
+    | '/_app/connections/new'
+    | '/_app/practices/new'
+    | '/_app/settings/organisation'
     | '/_app/connections/'
     | '/_app/logs/'
     | '/_app/practices/'
     | '/_app/settings/'
+    | '/_app/practices/$practiceId/connection'
+    | '/_app/practices/$practiceId/profile'
+    | '/_app/practices/$practiceId/webhooks'
+    | '/_app/connections/$connectionId/edit'
+    | '/_app/practices/$practiceId/patients'
+    | '/_app/practices/$practiceId/providers'
+    | '/_app/settings/user-details/change-password'
+    | '/_app/settings/user-details/mfa'
+    | '/_app/settings/users/invite'
+    | '/_app/connections/$connectionId/'
+    | '/_app/practices/$practiceId/'
+    | '/_app/settings/user-details/'
+    | '/_app/settings/users/'
+    | '/_app/practices/$practiceId/connection/attach'
+    | '/_app/practices/$practiceId/connection/edit'
+    | '/_app/practices/$practiceId/profile/edit'
+    | '/_app/practices/$practiceId/webhooks/new'
+    | '/_app/practices/$practiceId/connection/'
+    | '/_app/practices/$practiceId/profile/'
+    | '/_app/practices/$practiceId/webhooks/'
+    | '/_app/practices/$practiceId/webhooks/$webhookId/edit'
+    | '/_app/practices/$practiceId/webhooks/$webhookId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -185,6 +541,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppOverviewRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/settings': {
+      id: '/_app/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AppSettingsRouteRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_auth/forgot-password': {
       id: '/_auth/forgot-password'
       path: '/forgot-password'
@@ -213,6 +576,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppConnectionsIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/connections/new': {
+      id: '/_app/connections/new'
+      path: '/connections/new'
+      fullPath: '/connections/new'
+      preLoaderRoute: typeof AppConnectionsNewRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/logs/': {
       id: '/_app/logs/'
       path: '/logs'
@@ -227,30 +597,372 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPracticesIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/practices/$practiceId': {
+      id: '/_app/practices/$practiceId'
+      path: '/practices/$practiceId'
+      fullPath: '/practices/$practiceId'
+      preLoaderRoute: typeof AppPracticesPracticeIdRouteRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/practices/new': {
+      id: '/_app/practices/new'
+      path: '/practices/new'
+      fullPath: '/practices/new'
+      preLoaderRoute: typeof AppPracticesNewRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/settings/': {
       id: '/_app/settings/'
-      path: '/settings'
+      path: '/'
       fullPath: '/settings/'
       preLoaderRoute: typeof AppSettingsIndexRouteImport
+      parentRoute: typeof AppSettingsRouteRoute
+    }
+    '/_app/settings/organisation': {
+      id: '/_app/settings/organisation'
+      path: '/organisation'
+      fullPath: '/settings/organisation'
+      preLoaderRoute: typeof AppSettingsOrganisationRouteImport
+      parentRoute: typeof AppSettingsRouteRoute
+    }
+    '/_app/settings/user-details': {
+      id: '/_app/settings/user-details'
+      path: '/user-details'
+      fullPath: '/settings/user-details'
+      preLoaderRoute: typeof AppSettingsUserDetailsRouteRouteImport
+      parentRoute: typeof AppSettingsRouteRoute
+    }
+    '/_app/settings/users': {
+      id: '/_app/settings/users'
+      path: '/users'
+      fullPath: '/settings/users'
+      preLoaderRoute: typeof AppSettingsUsersRouteRouteImport
+      parentRoute: typeof AppSettingsRouteRoute
+    }
+    '/_app/connections/$connectionId/': {
+      id: '/_app/connections/$connectionId/'
+      path: '/connections/$connectionId'
+      fullPath: '/connections/$connectionId/'
+      preLoaderRoute: typeof AppConnectionsConnectionIdIndexRouteImport
       parentRoute: typeof AppRoute
+    }
+    '/_app/connections/$connectionId/edit': {
+      id: '/_app/connections/$connectionId/edit'
+      path: '/connections/$connectionId/edit'
+      fullPath: '/connections/$connectionId/edit'
+      preLoaderRoute: typeof AppConnectionsConnectionIdEditRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/practices/$practiceId/': {
+      id: '/_app/practices/$practiceId/'
+      path: '/'
+      fullPath: '/practices/$practiceId/'
+      preLoaderRoute: typeof AppPracticesPracticeIdIndexRouteImport
+      parentRoute: typeof AppPracticesPracticeIdRouteRoute
+    }
+    '/_app/practices/$practiceId/connection': {
+      id: '/_app/practices/$practiceId/connection'
+      path: '/connection'
+      fullPath: '/practices/$practiceId/connection'
+      preLoaderRoute: typeof AppPracticesPracticeIdConnectionRouteRouteImport
+      parentRoute: typeof AppPracticesPracticeIdRouteRoute
+    }
+    '/_app/practices/$practiceId/patients': {
+      id: '/_app/practices/$practiceId/patients'
+      path: '/patients'
+      fullPath: '/practices/$practiceId/patients'
+      preLoaderRoute: typeof AppPracticesPracticeIdPatientsRouteImport
+      parentRoute: typeof AppPracticesPracticeIdRouteRoute
+    }
+    '/_app/practices/$practiceId/profile': {
+      id: '/_app/practices/$practiceId/profile'
+      path: '/profile'
+      fullPath: '/practices/$practiceId/profile'
+      preLoaderRoute: typeof AppPracticesPracticeIdProfileRouteRouteImport
+      parentRoute: typeof AppPracticesPracticeIdRouteRoute
+    }
+    '/_app/practices/$practiceId/providers': {
+      id: '/_app/practices/$practiceId/providers'
+      path: '/providers'
+      fullPath: '/practices/$practiceId/providers'
+      preLoaderRoute: typeof AppPracticesPracticeIdProvidersRouteImport
+      parentRoute: typeof AppPracticesPracticeIdRouteRoute
+    }
+    '/_app/practices/$practiceId/webhooks': {
+      id: '/_app/practices/$practiceId/webhooks'
+      path: '/webhooks'
+      fullPath: '/practices/$practiceId/webhooks'
+      preLoaderRoute: typeof AppPracticesPracticeIdWebhooksRouteRouteImport
+      parentRoute: typeof AppPracticesPracticeIdRouteRoute
+    }
+    '/_app/settings/user-details/': {
+      id: '/_app/settings/user-details/'
+      path: '/'
+      fullPath: '/settings/user-details/'
+      preLoaderRoute: typeof AppSettingsUserDetailsIndexRouteImport
+      parentRoute: typeof AppSettingsUserDetailsRouteRoute
+    }
+    '/_app/settings/user-details/change-password': {
+      id: '/_app/settings/user-details/change-password'
+      path: '/change-password'
+      fullPath: '/settings/user-details/change-password'
+      preLoaderRoute: typeof AppSettingsUserDetailsChangePasswordRouteImport
+      parentRoute: typeof AppSettingsUserDetailsRouteRoute
+    }
+    '/_app/settings/user-details/mfa': {
+      id: '/_app/settings/user-details/mfa'
+      path: '/mfa'
+      fullPath: '/settings/user-details/mfa'
+      preLoaderRoute: typeof AppSettingsUserDetailsMfaRouteImport
+      parentRoute: typeof AppSettingsUserDetailsRouteRoute
+    }
+    '/_app/settings/users/': {
+      id: '/_app/settings/users/'
+      path: '/'
+      fullPath: '/settings/users/'
+      preLoaderRoute: typeof AppSettingsUsersIndexRouteImport
+      parentRoute: typeof AppSettingsUsersRouteRoute
+    }
+    '/_app/settings/users/invite': {
+      id: '/_app/settings/users/invite'
+      path: '/invite'
+      fullPath: '/settings/users/invite'
+      preLoaderRoute: typeof AppSettingsUsersInviteRouteImport
+      parentRoute: typeof AppSettingsUsersRouteRoute
+    }
+    '/_app/practices/$practiceId/connection/': {
+      id: '/_app/practices/$practiceId/connection/'
+      path: '/'
+      fullPath: '/practices/$practiceId/connection/'
+      preLoaderRoute: typeof AppPracticesPracticeIdConnectionIndexRouteImport
+      parentRoute: typeof AppPracticesPracticeIdConnectionRouteRoute
+    }
+    '/_app/practices/$practiceId/connection/attach': {
+      id: '/_app/practices/$practiceId/connection/attach'
+      path: '/attach'
+      fullPath: '/practices/$practiceId/connection/attach'
+      preLoaderRoute: typeof AppPracticesPracticeIdConnectionAttachRouteImport
+      parentRoute: typeof AppPracticesPracticeIdConnectionRouteRoute
+    }
+    '/_app/practices/$practiceId/connection/edit': {
+      id: '/_app/practices/$practiceId/connection/edit'
+      path: '/edit'
+      fullPath: '/practices/$practiceId/connection/edit'
+      preLoaderRoute: typeof AppPracticesPracticeIdConnectionEditRouteImport
+      parentRoute: typeof AppPracticesPracticeIdConnectionRouteRoute
+    }
+    '/_app/practices/$practiceId/profile/': {
+      id: '/_app/practices/$practiceId/profile/'
+      path: '/'
+      fullPath: '/practices/$practiceId/profile/'
+      preLoaderRoute: typeof AppPracticesPracticeIdProfileIndexRouteImport
+      parentRoute: typeof AppPracticesPracticeIdProfileRouteRoute
+    }
+    '/_app/practices/$practiceId/profile/edit': {
+      id: '/_app/practices/$practiceId/profile/edit'
+      path: '/edit'
+      fullPath: '/practices/$practiceId/profile/edit'
+      preLoaderRoute: typeof AppPracticesPracticeIdProfileEditRouteImport
+      parentRoute: typeof AppPracticesPracticeIdProfileRouteRoute
+    }
+    '/_app/practices/$practiceId/webhooks/': {
+      id: '/_app/practices/$practiceId/webhooks/'
+      path: '/'
+      fullPath: '/practices/$practiceId/webhooks/'
+      preLoaderRoute: typeof AppPracticesPracticeIdWebhooksIndexRouteImport
+      parentRoute: typeof AppPracticesPracticeIdWebhooksRouteRoute
+    }
+    '/_app/practices/$practiceId/webhooks/new': {
+      id: '/_app/practices/$practiceId/webhooks/new'
+      path: '/new'
+      fullPath: '/practices/$practiceId/webhooks/new'
+      preLoaderRoute: typeof AppPracticesPracticeIdWebhooksNewRouteImport
+      parentRoute: typeof AppPracticesPracticeIdWebhooksRouteRoute
+    }
+    '/_app/practices/$practiceId/webhooks/$webhookId/': {
+      id: '/_app/practices/$practiceId/webhooks/$webhookId/'
+      path: '/$webhookId'
+      fullPath: '/practices/$practiceId/webhooks/$webhookId/'
+      preLoaderRoute: typeof AppPracticesPracticeIdWebhooksWebhookIdIndexRouteImport
+      parentRoute: typeof AppPracticesPracticeIdWebhooksRouteRoute
+    }
+    '/_app/practices/$practiceId/webhooks/$webhookId/edit': {
+      id: '/_app/practices/$practiceId/webhooks/$webhookId/edit'
+      path: '/$webhookId/edit'
+      fullPath: '/practices/$practiceId/webhooks/$webhookId/edit'
+      preLoaderRoute: typeof AppPracticesPracticeIdWebhooksWebhookIdEditRouteImport
+      parentRoute: typeof AppPracticesPracticeIdWebhooksRouteRoute
     }
   }
 }
 
-interface AppRouteChildren {
-  AppOverviewRoute: typeof AppOverviewRoute
-  AppConnectionsIndexRoute: typeof AppConnectionsIndexRoute
-  AppLogsIndexRoute: typeof AppLogsIndexRoute
-  AppPracticesIndexRoute: typeof AppPracticesIndexRoute
+interface AppSettingsUserDetailsRouteRouteChildren {
+  AppSettingsUserDetailsChangePasswordRoute: typeof AppSettingsUserDetailsChangePasswordRoute
+  AppSettingsUserDetailsMfaRoute: typeof AppSettingsUserDetailsMfaRoute
+  AppSettingsUserDetailsIndexRoute: typeof AppSettingsUserDetailsIndexRoute
+}
+
+const AppSettingsUserDetailsRouteRouteChildren: AppSettingsUserDetailsRouteRouteChildren =
+  {
+    AppSettingsUserDetailsChangePasswordRoute:
+      AppSettingsUserDetailsChangePasswordRoute,
+    AppSettingsUserDetailsMfaRoute: AppSettingsUserDetailsMfaRoute,
+    AppSettingsUserDetailsIndexRoute: AppSettingsUserDetailsIndexRoute,
+  }
+
+const AppSettingsUserDetailsRouteRouteWithChildren =
+  AppSettingsUserDetailsRouteRoute._addFileChildren(
+    AppSettingsUserDetailsRouteRouteChildren,
+  )
+
+interface AppSettingsUsersRouteRouteChildren {
+  AppSettingsUsersInviteRoute: typeof AppSettingsUsersInviteRoute
+  AppSettingsUsersIndexRoute: typeof AppSettingsUsersIndexRoute
+}
+
+const AppSettingsUsersRouteRouteChildren: AppSettingsUsersRouteRouteChildren = {
+  AppSettingsUsersInviteRoute: AppSettingsUsersInviteRoute,
+  AppSettingsUsersIndexRoute: AppSettingsUsersIndexRoute,
+}
+
+const AppSettingsUsersRouteRouteWithChildren =
+  AppSettingsUsersRouteRoute._addFileChildren(
+    AppSettingsUsersRouteRouteChildren,
+  )
+
+interface AppSettingsRouteRouteChildren {
+  AppSettingsUserDetailsRouteRoute: typeof AppSettingsUserDetailsRouteRouteWithChildren
+  AppSettingsUsersRouteRoute: typeof AppSettingsUsersRouteRouteWithChildren
+  AppSettingsOrganisationRoute: typeof AppSettingsOrganisationRoute
   AppSettingsIndexRoute: typeof AppSettingsIndexRoute
 }
 
+const AppSettingsRouteRouteChildren: AppSettingsRouteRouteChildren = {
+  AppSettingsUserDetailsRouteRoute:
+    AppSettingsUserDetailsRouteRouteWithChildren,
+  AppSettingsUsersRouteRoute: AppSettingsUsersRouteRouteWithChildren,
+  AppSettingsOrganisationRoute: AppSettingsOrganisationRoute,
+  AppSettingsIndexRoute: AppSettingsIndexRoute,
+}
+
+const AppSettingsRouteRouteWithChildren =
+  AppSettingsRouteRoute._addFileChildren(AppSettingsRouteRouteChildren)
+
+interface AppPracticesPracticeIdConnectionRouteRouteChildren {
+  AppPracticesPracticeIdConnectionAttachRoute: typeof AppPracticesPracticeIdConnectionAttachRoute
+  AppPracticesPracticeIdConnectionEditRoute: typeof AppPracticesPracticeIdConnectionEditRoute
+  AppPracticesPracticeIdConnectionIndexRoute: typeof AppPracticesPracticeIdConnectionIndexRoute
+}
+
+const AppPracticesPracticeIdConnectionRouteRouteChildren: AppPracticesPracticeIdConnectionRouteRouteChildren =
+  {
+    AppPracticesPracticeIdConnectionAttachRoute:
+      AppPracticesPracticeIdConnectionAttachRoute,
+    AppPracticesPracticeIdConnectionEditRoute:
+      AppPracticesPracticeIdConnectionEditRoute,
+    AppPracticesPracticeIdConnectionIndexRoute:
+      AppPracticesPracticeIdConnectionIndexRoute,
+  }
+
+const AppPracticesPracticeIdConnectionRouteRouteWithChildren =
+  AppPracticesPracticeIdConnectionRouteRoute._addFileChildren(
+    AppPracticesPracticeIdConnectionRouteRouteChildren,
+  )
+
+interface AppPracticesPracticeIdProfileRouteRouteChildren {
+  AppPracticesPracticeIdProfileEditRoute: typeof AppPracticesPracticeIdProfileEditRoute
+  AppPracticesPracticeIdProfileIndexRoute: typeof AppPracticesPracticeIdProfileIndexRoute
+}
+
+const AppPracticesPracticeIdProfileRouteRouteChildren: AppPracticesPracticeIdProfileRouteRouteChildren =
+  {
+    AppPracticesPracticeIdProfileEditRoute:
+      AppPracticesPracticeIdProfileEditRoute,
+    AppPracticesPracticeIdProfileIndexRoute:
+      AppPracticesPracticeIdProfileIndexRoute,
+  }
+
+const AppPracticesPracticeIdProfileRouteRouteWithChildren =
+  AppPracticesPracticeIdProfileRouteRoute._addFileChildren(
+    AppPracticesPracticeIdProfileRouteRouteChildren,
+  )
+
+interface AppPracticesPracticeIdWebhooksRouteRouteChildren {
+  AppPracticesPracticeIdWebhooksNewRoute: typeof AppPracticesPracticeIdWebhooksNewRoute
+  AppPracticesPracticeIdWebhooksIndexRoute: typeof AppPracticesPracticeIdWebhooksIndexRoute
+  AppPracticesPracticeIdWebhooksWebhookIdEditRoute: typeof AppPracticesPracticeIdWebhooksWebhookIdEditRoute
+  AppPracticesPracticeIdWebhooksWebhookIdIndexRoute: typeof AppPracticesPracticeIdWebhooksWebhookIdIndexRoute
+}
+
+const AppPracticesPracticeIdWebhooksRouteRouteChildren: AppPracticesPracticeIdWebhooksRouteRouteChildren =
+  {
+    AppPracticesPracticeIdWebhooksNewRoute:
+      AppPracticesPracticeIdWebhooksNewRoute,
+    AppPracticesPracticeIdWebhooksIndexRoute:
+      AppPracticesPracticeIdWebhooksIndexRoute,
+    AppPracticesPracticeIdWebhooksWebhookIdEditRoute:
+      AppPracticesPracticeIdWebhooksWebhookIdEditRoute,
+    AppPracticesPracticeIdWebhooksWebhookIdIndexRoute:
+      AppPracticesPracticeIdWebhooksWebhookIdIndexRoute,
+  }
+
+const AppPracticesPracticeIdWebhooksRouteRouteWithChildren =
+  AppPracticesPracticeIdWebhooksRouteRoute._addFileChildren(
+    AppPracticesPracticeIdWebhooksRouteRouteChildren,
+  )
+
+interface AppPracticesPracticeIdRouteRouteChildren {
+  AppPracticesPracticeIdConnectionRouteRoute: typeof AppPracticesPracticeIdConnectionRouteRouteWithChildren
+  AppPracticesPracticeIdProfileRouteRoute: typeof AppPracticesPracticeIdProfileRouteRouteWithChildren
+  AppPracticesPracticeIdWebhooksRouteRoute: typeof AppPracticesPracticeIdWebhooksRouteRouteWithChildren
+  AppPracticesPracticeIdPatientsRoute: typeof AppPracticesPracticeIdPatientsRoute
+  AppPracticesPracticeIdProvidersRoute: typeof AppPracticesPracticeIdProvidersRoute
+  AppPracticesPracticeIdIndexRoute: typeof AppPracticesPracticeIdIndexRoute
+}
+
+const AppPracticesPracticeIdRouteRouteChildren: AppPracticesPracticeIdRouteRouteChildren =
+  {
+    AppPracticesPracticeIdConnectionRouteRoute:
+      AppPracticesPracticeIdConnectionRouteRouteWithChildren,
+    AppPracticesPracticeIdProfileRouteRoute:
+      AppPracticesPracticeIdProfileRouteRouteWithChildren,
+    AppPracticesPracticeIdWebhooksRouteRoute:
+      AppPracticesPracticeIdWebhooksRouteRouteWithChildren,
+    AppPracticesPracticeIdPatientsRoute: AppPracticesPracticeIdPatientsRoute,
+    AppPracticesPracticeIdProvidersRoute: AppPracticesPracticeIdProvidersRoute,
+    AppPracticesPracticeIdIndexRoute: AppPracticesPracticeIdIndexRoute,
+  }
+
+const AppPracticesPracticeIdRouteRouteWithChildren =
+  AppPracticesPracticeIdRouteRoute._addFileChildren(
+    AppPracticesPracticeIdRouteRouteChildren,
+  )
+
+interface AppRouteChildren {
+  AppSettingsRouteRoute: typeof AppSettingsRouteRouteWithChildren
+  AppOverviewRoute: typeof AppOverviewRoute
+  AppPracticesPracticeIdRouteRoute: typeof AppPracticesPracticeIdRouteRouteWithChildren
+  AppConnectionsNewRoute: typeof AppConnectionsNewRoute
+  AppPracticesNewRoute: typeof AppPracticesNewRoute
+  AppConnectionsIndexRoute: typeof AppConnectionsIndexRoute
+  AppLogsIndexRoute: typeof AppLogsIndexRoute
+  AppPracticesIndexRoute: typeof AppPracticesIndexRoute
+  AppConnectionsConnectionIdEditRoute: typeof AppConnectionsConnectionIdEditRoute
+  AppConnectionsConnectionIdIndexRoute: typeof AppConnectionsConnectionIdIndexRoute
+}
+
 const AppRouteChildren: AppRouteChildren = {
+  AppSettingsRouteRoute: AppSettingsRouteRouteWithChildren,
   AppOverviewRoute: AppOverviewRoute,
+  AppPracticesPracticeIdRouteRoute:
+    AppPracticesPracticeIdRouteRouteWithChildren,
+  AppConnectionsNewRoute: AppConnectionsNewRoute,
+  AppPracticesNewRoute: AppPracticesNewRoute,
   AppConnectionsIndexRoute: AppConnectionsIndexRoute,
   AppLogsIndexRoute: AppLogsIndexRoute,
   AppPracticesIndexRoute: AppPracticesIndexRoute,
-  AppSettingsIndexRoute: AppSettingsIndexRoute,
+  AppConnectionsConnectionIdEditRoute: AppConnectionsConnectionIdEditRoute,
+  AppConnectionsConnectionIdIndexRoute: AppConnectionsConnectionIdIndexRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)

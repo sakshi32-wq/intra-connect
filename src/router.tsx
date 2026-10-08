@@ -25,4 +25,8 @@ declare module '@tanstack/react-router' {
   interface Register {
     router: ReturnType<typeof getRouter>
   }
+  interface StaticDataRouteOption {
+    /** Breadcrumb label contributed by this route inside a section layout. */
+    crumb?: string
+  }
 }

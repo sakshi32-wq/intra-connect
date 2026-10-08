@@ -17,6 +17,7 @@ import { cn } from '#/lib/utils'
 export interface Crumb {
   label: string
   to?: LinkProps['to']
+  params?: LinkProps['params']
 }
 
 interface PageHeaderProps {
@@ -66,7 +67,9 @@ export function PageHeader({ title, breadcrumbs, variant = 'white', actions, chi
                           </BreadcrumbPage>
                         ) : (
                           <BreadcrumbLink asChild className="hover:text-current hover:underline">
-                            <Link to={crumb.to}>{crumb.label}</Link>
+                            <Link to={crumb.to} params={crumb.params}>
+                              {crumb.label}
+                            </Link>
                           </BreadcrumbLink>
                         )}
                       </BreadcrumbItem>
