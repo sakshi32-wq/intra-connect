@@ -46,7 +46,7 @@ export function UserProfileForm({ user }: { user: CurrentUser }) {
             form.reset(form.getValues())
             toast.success('Profile details saved')
           })}
-          className="flex min-w-0 flex-1 flex-col gap-[23px] pt-2.5"
+          className="flex min-w-0 flex-1 flex-col gap-[23px] pt-0.5"
         >
           <TextField
             control={form.control}

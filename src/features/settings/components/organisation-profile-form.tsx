@@ -47,7 +47,7 @@ export function OrganisationProfileForm({
             uploadLabel="Upload Org Logo"
             placeholder={<Building2 className="size-28 stroke-1 text-foreground" aria-hidden />}
           />
-          <div className="flex min-w-0 flex-1 flex-col gap-[42px]">
+          <div className="flex min-w-0 flex-1 flex-col gap-[65px]">
             <TextField
               control={control}
               name="name"

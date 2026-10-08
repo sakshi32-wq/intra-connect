@@ -85,7 +85,7 @@ function MfaPage() {
         aria-label={step === 'register' ? 'Choose an MFA method' : 'Set up your MFA device'}
         className={cn(
           'mt-[25px] ml-[3px] bg-card shadow-[0_6px_10px_rgb(0_0_0/0.12)]',
-          step === 'register' ? 'px-[22px] pt-[19px] pb-4' : 'px-[59px] pt-[26px] pb-[42px]',
+          step === 'register' ? 'px-[22px] pt-[19px] pb-4' : 'min-h-[714px] px-[59px] pt-[26px] pb-[42px]',
         )}
       >
         {step === 'register' ? (
