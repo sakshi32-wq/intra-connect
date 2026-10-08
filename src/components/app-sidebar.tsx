@@ -34,10 +34,10 @@ const PRIMARY_NAV: ReadonlyArray<NavItem> = [
   { label: 'Setting', to: '/settings', icon: Settings },
 ]
 
-// No pages are designed for these; they open external docs (SCREEN_MAP Q4).
+// No pages are designed for these yet (SCREEN_MAP Q4); they don't navigate anywhere.
 const SECONDARY_NAV = [
-  { label: 'Documentation', href: 'https://docs.intraconnects.com', icon: BookOpen },
-  { label: 'API Reference', href: 'https://docs.intraconnects.com/api', icon: Braces },
+  { label: 'Documentation', icon: BookOpen },
+  { label: 'API Reference', icon: Braces },
 ] as const
 
 /** Row: 65px tall at a 66px pitch, icon 24px at x=45, label at x=84 (Connection frame). */
@@ -78,14 +78,14 @@ export function AppSidebar({ user, organisation }: { user: CurrentUser; organisa
         </nav>
         <SidebarSeparator className="mx-[39px] mt-[29px] mb-[31px]" />
         <SidebarMenu className="gap-px">
-          {SECONDARY_NAV.map(({ label, href, icon: Icon }) => (
+          {SECONDARY_NAV.map(({ label, icon: Icon }) => (
             <SidebarMenuItem key={label}>
-              <SidebarMenuButton asChild className={rowClass}>
-                <a href={href} target="_blank" rel="noreferrer">
-                  <Icon aria-hidden />
-                  <span>{label}</span>
-                  <span className="sr-only"> (opens in a new tab)</span>
-                </a>
+              <SidebarMenuButton
+                className={rowClass}
+                onClick={() => toast.info(`${label} is coming soon`)}
+              >
+                <Icon aria-hidden />
+                <span>{label}</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
