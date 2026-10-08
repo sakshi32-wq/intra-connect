@@ -1,9 +1,22 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { SectionPlaceholder } from '#/components/section-placeholder'
+import {
+  PracticeConnectionEmpty,
+  PracticeConnectionView,
+} from '#/features/practices/components/detail/practice-connection-view'
+import { getSamplePractice } from '#/features/practices/components/detail/sample-lookup'
+import { hasSampleConnection, samplePracticeConnection } from '#/features/practices/sample-data'
 
-// Placeholder: built in the UI pass (see docs/SCREEN_MAP.md).
+// Frames 27 (no connection attached) and 28 (attached).
 export const Route = createFileRoute('/_app/practices/$practiceId/connection/')({
   head: () => ({ meta: [{ title: 'Practice Connection · IntraConnect' }] }),
-  component: () => <SectionPlaceholder section="Practice Connection" />,
+  component: PracticeConnectionPage,
 })
+
+function PracticeConnectionPage() {
+  const { practiceId } = Route.useParams()
+  const practice = getSamplePractice(practiceId)
+
+  if (!hasSampleConnection(practiceId)) return <PracticeConnectionEmpty practiceId={practiceId} />
+  return <PracticeConnectionView practice={practice} connection={{ ...samplePracticeConnection, practiceId }} />
+}
