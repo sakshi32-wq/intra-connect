@@ -42,6 +42,7 @@ Build the screens' UI only — **no data integration** for new screens:
 - Don't hand-write components shadcn already provides. Translate Figma design-context output into shadcn + Tailwind idioms; never paste absolute-positioned output.
 - No `any`, no unused/demo code. `pnpm typecheck`, `pnpm lint` and `pnpm build` must pass.
 - SSR is off by default (`src/start.ts` → `defaultSsr: false`): the mock db and session live in the browser.
+- Don't run the standalone `pnpm exec tsr generate`: it drops the TanStack Start `Register` block from `src/routeTree.gen.ts`. The Vite plugin regenerates the route tree correctly during `pnpm dev` / `pnpm build`.
 - Import alias is `#/` (e.g. `#/components/ui/button`). Forms use shadcn `form` + react-hook-form + zod.
 
 ## After every `pnpm dlx shadcn@latest add …`

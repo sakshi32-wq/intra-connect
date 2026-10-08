@@ -1,8 +1,8 @@
 # Progress
 
-**In progress:** ⏸ Logs UI merged — waiting for user review. Going feature by feature (2026-10-08). Next: Setting (not built yet).
+**In progress:** ⏸ All screens' UI merged (Setting last) — waiting for user review. Next when asked: data integration (api.ts + mock db) per the architecture rules, or Phase 10 links.
 
-> **Built but not merged yet** (git branches from the parallel run, merge one feature at a time on request): (none left). **Not built** (agent hit the session limit): Setting — re-run later.
+> **Built but not merged yet** (git branches from the parallel run, merge one feature at a time on request): none — every section is merged.
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -37,7 +37,7 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 
 ## Phase 3 — App shell
 - [x] `_app` layout: AppSidebar (nav, Documentation/API Reference links, footer env/org switchers + user card with Sign out), PageHeader (white + navy variants), section placeholders for Connection/Practices/Logs/Setting; sidebar 372px at 1920 → 260px min at 1280
-- [ ] Add "User Details" to the user menu once `/settings/user-details` exists (Phase 9)
+- [x] Add "User Details" to the user menu
 - [x] Review — user switched to UI-only mode (2026-10-08); shell code review stopped
 
 ## Phase 4 — Overview
@@ -70,10 +70,10 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 - [ ] ⏸ Review
 
 ## Phase 9 — Setting
-- [ ] `settings` layout (3 pill tabs)
-- [ ] Setting, 8 Organisation profile `/settings/organisation?step`
-- [ ] 9 Manage users · 18, 19 invite
-- [ ] 10, 14 User details · 11, 12, 13, 16, 17 MFA wizard · 15, 20 change password
+- [x] `settings` layout (3 pill tabs)
+- [x] Setting, 8 Organisation profile `/settings/organisation?step`
+- [x] 9 Manage users · 18, 19 invite
+- [x] 10, 14 User details (opens as 14; delete both devices → 10) · 11, 12, 13, 16, 17 MFA wizard · 15, 20 change password
 - [ ] ⏸ Review
 
 ## Phase 10 — API Reference / Documentation

@@ -1,6 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query'
-import { useNavigate } from '@tanstack/react-router'
-import { ChevronDown, LogOut } from 'lucide-react'
+import { Link, useNavigate } from '@tanstack/react-router'
+import { ChevronDown, LogOut, UserRound } from 'lucide-react'
 
 import { Avatar, AvatarFallback } from '#/components/ui/avatar'
 import {
@@ -23,7 +23,7 @@ function initials(name: string) {
     .join('')
 }
 
-/** White user card in the sidebar footer; its menu is not designed (SCREEN_MAP Q5). */
+/** White user card in the sidebar footer; its menu is not designed (SCREEN_MAP Q5 default: User Details + Sign out). */
 export function NavUser({ user }: { user: CurrentUser }) {
   const navigate = useNavigate()
   const queryClient = useQueryClient()
@@ -57,6 +57,12 @@ export function NavUser({ user }: { user: CurrentUser }) {
           <span className="truncate text-xs font-normal text-muted-foreground">{user.email}</span>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
+        <DropdownMenuItem asChild>
+          <Link to="/settings/user-details">
+            <UserRound aria-hidden />
+            User Details
+          </Link>
+        </DropdownMenuItem>
         <DropdownMenuItem onSelect={signOut}>
           <LogOut aria-hidden />
           Sign out
