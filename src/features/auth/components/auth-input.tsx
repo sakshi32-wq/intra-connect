@@ -34,7 +34,6 @@ export function AuthInput({ icon: Icon, type, ...props }: AuthInputProps) {
           <InputGroupButton
             size="icon-sm"
             aria-label={visible ? 'Hide password' : 'Show password'}
-            aria-pressed={visible}
             onClick={() => setVisible((value) => !value)}
           >
             {visible ? <Eye /> : <EyeOff />}

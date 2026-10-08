@@ -27,7 +27,7 @@ function LoginPage() {
   return (
     <AuthCard className="pt-[95px] pb-[82px]">
       <AuthHeader
-        eyebrow="Welcome Back !"
+        eyebrow="Welcome Back!"
         title="Sign In"
         prompt="Don’t have an account?"
         linkLabel="Sign Up"

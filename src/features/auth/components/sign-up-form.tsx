@@ -6,6 +6,8 @@ import { useForm, useWatch } from 'react-hook-form'
 import { Button } from '#/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '#/components/ui/form'
 import { Spinner } from '#/components/ui/spinner'
+import { HttpError } from '#/lib/http-error'
+import { cn } from '#/lib/utils'
 import { signUpMutation } from '../api'
 import { signUpSchema } from '../schemas'
 import type { SignUpValues } from '../schemas'
@@ -13,6 +15,11 @@ import { authButtonClass } from './auth-card'
 import { AuthInput } from './auth-input'
 import { FormError } from './form-error'
 import { PasswordRules } from './password-rules'
+
+/** 409 = email already registered; shown on the Email field instead of below the form. */
+function isConflict(error: Error | null): error is HttpError {
+  return error instanceof HttpError && error.status === 409
+}
 
 export function SignUpForm({ onSignedUp }: { onSignedUp: (email: string) => void }) {
   const form = useForm<SignUpValues>({
@@ -23,6 +30,11 @@ export function SignUpForm({ onSignedUp }: { onSignedUp: (email: string) => void
   const signUp = useMutation({
     ...signUpMutation(),
     onSuccess: ({ email }) => onSignedUp(email),
+    onError: (error) => {
+      if (isConflict(error)) {
+        form.setError('email', { message: error.message }, { shouldFocus: true })
+      }
+    },
   })
 
   return (
@@ -39,7 +51,7 @@ export function SignUpForm({ onSignedUp }: { onSignedUp: (email: string) => void
             <FormItem className="gap-1">
               <FormLabel className="sr-only">Username</FormLabel>
               <FormControl>
-                <AuthInput icon={UserRound} autoComplete="username" placeholder="Username" {...field} />
+                <AuthInput icon={UserRound} autoComplete="nickname" placeholder="Username" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -52,7 +64,7 @@ export function SignUpForm({ onSignedUp }: { onSignedUp: (email: string) => void
             <FormItem className="gap-1">
               <FormLabel className="sr-only">Email ID</FormLabel>
               <FormControl>
-                <AuthInput icon={Mail} type="email" autoComplete="email" placeholder="Email ID" {...field} />
+                <AuthInput icon={Mail} type="email" autoComplete="username" placeholder="Email ID" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -70,11 +82,11 @@ export function SignUpForm({ onSignedUp }: { onSignedUp: (email: string) => void
                   type="password"
                   autoComplete="new-password"
                   placeholder="Password"
-                  aria-describedby="password-rules"
                   {...field}
                 />
               </FormControl>
               <PasswordRules value={password} showErrors={form.formState.isSubmitted} />
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -97,9 +109,14 @@ export function SignUpForm({ onSignedUp }: { onSignedUp: (email: string) => void
             </FormItem>
           )}
         />
-        <FormError error={signUp.error} />
-        <Button type="submit" disabled={signUp.isPending} className={`mt-5 ${authButtonClass}`}>
-          {signUp.isPending ? <Spinner /> : null}
+        <FormError error={isConflict(signUp.error) ? null : signUp.error} />
+        <Button
+          type="submit"
+          disabled={signUp.isPending}
+          aria-busy={signUp.isPending}
+          className={cn('mt-5', authButtonClass)}
+        >
+          {signUp.isPending ? <Spinner aria-hidden /> : null}
           Sign Up
         </Button>
       </form>

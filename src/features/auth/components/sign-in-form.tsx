@@ -9,10 +9,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Spinner } from '#/components/ui/spinner'
 import { Switch } from '#/components/ui/switch'
 import { saveSession } from '#/lib/session'
+import { cn } from '#/lib/utils'
 import { signInMutation } from '../api'
 import { signInSchema } from '../schemas'
 import type { SignInValues } from '../schemas'
-import { authButtonClass } from './auth-card'
+import { authButtonClass, authLinkClass } from './auth-card'
 import { AuthInput } from './auth-input'
 import { FormError } from './form-error'
 
@@ -43,7 +44,7 @@ export function SignInForm({ onSignedIn }: { onSignedIn: () => void }) {
             <FormItem className="gap-1">
               <FormLabel className="sr-only">Email ID</FormLabel>
               <FormControl>
-                <AuthInput icon={Mail} type="email" autoComplete="email" placeholder="Email ID" {...field} />
+                <AuthInput icon={Mail} type="email" autoComplete="username" placeholder="Email ID" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -76,22 +77,28 @@ export function SignInForm({ onSignedIn }: { onSignedIn: () => void }) {
               <FormItem className="flex flex-row items-center gap-1.5">
                 <FormControl>
                   <Switch
+                    size="auth"
                     checked={field.value}
                     onCheckedChange={field.onChange}
-                    className="h-[17px] w-[33px] data-[state=checked]:bg-auth-toggle"
+                    className="data-[state=checked]:bg-auth-toggle"
                   />
                 </FormControl>
                 <FormLabel className="text-lg font-normal text-muted-foreground">Remember me</FormLabel>
               </FormItem>
             )}
           />
-          <Link to="/forgot-password" className="text-lg font-medium text-auth-link hover:underline">
+          <Link to="/forgot-password" className={cn('text-lg font-medium', authLinkClass)}>
             Forgot Password
           </Link>
         </div>
         <FormError error={signIn.error} />
-        <Button type="submit" disabled={signIn.isPending} className={`mt-5 ${authButtonClass}`}>
-          {signIn.isPending ? <Spinner /> : null}
+        <Button
+          type="submit"
+          disabled={signIn.isPending}
+          aria-busy={signIn.isPending}
+          className={cn('mt-5', authButtonClass)}
+        >
+          {signIn.isPending ? <Spinner aria-hidden /> : null}
           Sign In
         </Button>
       </form>

@@ -228,8 +228,10 @@ No overlay is URL-addressable. Every wizard step and success screen is (§2.2).
 - 1 → submit → `/overview`.
 
 **Data**
-- `AuthUser { email, password }`. Remember me is local only.
-- Mock sign-in accepts any registered email.
+- `Session { email, signedInAt }` (`src/features/auth/types.ts`), persisted by `src/lib/session.ts`.
+- Mock sign-in accepts any valid email with a password of 6+ characters (per the brief). Sign-up rejects emails already registered (409, shown on the Email field).
+- Remember me ON stores the session in localStorage; OFF stores it in sessionStorage (ends with the tab).
+- `_app` routes redirect to `/login?redirect=<path>` when signed out; `_auth` routes redirect to `/overview` when signed in. Only same-origin paths are honoured as `redirect`.
 
 ### 4.2 App shell (`_app`)
 
@@ -641,6 +643,7 @@ No overlay is URL-addressable. Every wizard step and success screen is (§2.2).
 
 | As designed | Correct |
 |---|---|
+| "Welcome Back !" / "Welcome !" (1–2, space before "!") | "Welcome Back!" / "Welcome!" |
 | API Refrence | API Reference |
 | Forget Password | Forgot Password |
 | Reset password though the Email Sent / verifaction / Introconnectuser@xyz.com | Reset link sent / verification / (use the submitted email) |

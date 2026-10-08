@@ -1,12 +1,15 @@
 import { Check, Dot } from 'lucide-react'
 
+import { useFormField } from '#/components/ui/form'
 import { cn } from '#/lib/utils'
 import { PASSWORD_RULES } from '../schemas'
 
 /** Live checklist under the Sign Up password (frame 2 draws it as static bullets). */
+/** Rendered inside the password FormItem; doubles as its FormDescription. */
 export function PasswordRules({ value, showErrors }: { value: string; showErrors: boolean }) {
+  const { formDescriptionId } = useFormField()
   return (
-    <ul id="password-rules" className="-ml-[9px] flex flex-col gap-[11px]">
+    <ul id={formDescriptionId} className="-ml-[9px] flex flex-col gap-[11px]">
       {PASSWORD_RULES.map((rule) => {
         const met = rule.test(value)
         return (

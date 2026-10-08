@@ -72,7 +72,7 @@ Almost all text is **pure black or pure white at an opacity**. Every pair below 
 | `#7F7F7F` | black 50% | **Muted**: placeholders, helper text, breadcrumb links, secondary table cells, app-type badge text, Log ID value, wizard subtext, success subtitle, dropdown items, "PENDING INVITES" caption, chevrons, search icon, auth input icons | Setting (838,232,1040,256) · (823,274,1130,298) · (560,38,617,62) · Connection (939,242,1000,266) · Frame 2 (38,153,147,177) · 9 (452,272,590,291) |
 | `#7A7A7A` / `#747A7F` / `#737373` | black 50% on `#F4F4F4` / `#E8F4FF` / `#E6E6E6` | Key-value labels; "Showing 1 to 10…" and flow arrows; toggle-pill label | 63 (461,225,614,247) · Connection (414,1023,701,1047) · Connection (1624,245,1673,264) |
 | `#616161` | black 62% | Copy icon | Connection (584,242,608,266) |
-| `#000000` | black | Sidebar select values ("Production", "DocMD") | Overview (60,857,129,879) |
+| `#000000` | black | Sidebar select values ("Production", "DocMD"); auth frame 4 "An email is sent to …" line | Overview (60,857,129,879) · 4 (≈740,596,1180,608) |
 | `#FFFFFF` | white | Sidebar nav text and icons (active and inactive alike); navy-header title | Overview (84,188,195,212) · (84,122,175,146) · (414,30,559,69) |
 | `#BAC8CF` | white 70% on `#1A495F` | Breadcrumb on navy header (all items) | Logs 1 (522,38,578,62) · (616,38,663,62) |
 | `#A3B6BF` | white 60% on `#1A495F` | Sidebar footer captions ("CURRENT ENVIRONMENT") | Overview (48,827,247,846) |
@@ -283,6 +283,7 @@ There is no dark theme in Figma, so ship `:root` only. Values are flattened hex 
   --auth-primary: #009AC1;
   --auth-link: #00A3CC;
   --auth-input-border: #7F7F7F;
+  --auth-toggle: #1EA64B;               /* Remember-me switch, frame 1 */
   --auth-gradient: linear-gradient(61deg, #3D5B8E 0%, #268AB8 50%, #0EB9E3 100%);
 
   /* elevation (fitted) */
@@ -361,6 +362,7 @@ There is no dark theme in Figma, so ship `:root` only. Values are flattened hex 
   --color-auth-primary: var(--auth-primary);
   --color-auth-link: var(--auth-link);
   --color-auth-input-border: var(--auth-input-border);
+  --color-auth-toggle: var(--auth-toggle);
 
   --radius-sm: var(--radius);                  /* 4  */
   --radius-md: var(--radius);                  /* 4  shadcn default for buttons/inputs */
@@ -442,7 +444,7 @@ export const LAYOUT = {
 
 1. **Two header styles.** Overview and Logs use a navy header (`#1A495F`, white title, `#BAC8CF` breadcrumb, no shadow). Every other page uses a white header (`#333` title, `#7F7F7F`/`#4D4D4D` breadcrumb, `--shadow-header`). Both are verified by sampling. **Normalise to the white header** (the majority: about 60 frames), unless the designer confirms the navy variant is intentional for "dashboard" pages. Keep `--header-navy*` tokens available.
 2. **Two primary blues.** App `#1890FF`; auth `#009AC1` (button) and `#00A3CC` (link). They are visibly distinct and scoped to the auth screens. Keep them scoped as `--auth-*`. If the designer wants one brand colour, use `#1890FF`.
-3. **Two success greens.** `#1AC252` (28 frames: status text, toggles, badges, icons) and `#1EA64B` (auth toggle only). **Use `#1AC252`.**
+3. **Two success greens.** `#1AC252` (28 frames: status text, toggles, badges, icons) and `#1EA64B` (auth toggle only). **Use `#1AC252` across the app**; `#1EA64B` is kept only as `--auth-toggle`, scoped to the auth Remember-me switch like the other `--auth-*` tokens.
 4. **Text greys are black/white alpha overlays** (80/70/50% black, 70/60/50% white), so one Figma style shows 3–5 different hexes. **Use flattened hex on white** (`#333333`, `#4D4D4D`, `#7F7F7F`); the shift on tinted surfaces is at most 6/255 per channel. Alternative: define `--foreground: rgb(0 0 0 / .8)` and so on to reproduce Figma exactly. Do not mix the two approaches.
 5. **Border greys.** `#BFBFBF` covers 57 frames (inputs, dividers, cards). The others: auth inputs `#7F7F7F`; inactive badge `#B0B0B0`; 3px section dividers. **Use `#BFBFBF` everywhere in the app**, and keep `#7F7F7F` for auth inputs only. Render the 3px Setting divider as `border-t` 1px unless the designer confirms.
 6. **Near-duplicate light neutrals.** `#F2F2F2` (section bar, neutral badge), `#F4F4F4` (key-value panels), `#F0F0F0` (log strip, scrollbar track), `#EFEFEF` (detail toggle pill, empty cell), `#ECECEC` (illustration card), `#EBEBEB` (upload strip, inactive badge), `#E6E6E6` (table toggle pill). **Collapse to three**: `--muted #F2F2F2` (bars, badges, strips: absorbs `#F0F0F0`/`#F4F4F4`/`#EFEFEF`), `--inactive-badge #EBEBEB` (absorbs `#ECECEC`), `--toggle-pill #E6E6E6`.

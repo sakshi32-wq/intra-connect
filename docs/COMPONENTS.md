@@ -257,8 +257,8 @@ These are small rectangular badges (radius ~2, ~36px tall in 9, compact elsewher
 
 | Component | Frames | Anatomy | shadcn |
 |---|---|---|---|
-| `AuthLayout` (`auth-layout.tsx`) | 1–4 | full-bleed diagonal gradient (slate-indigo bottom-left → cyan top-right); no logo drawn; card centred (frame 1 has it right-aligned; centre it everywhere and add the recreated logo above) | — |
-| `AuthCard` (`auth-card.tsx`) | 1–4 | white, 581px wide, radius ~24, centred content: muted eyebrow **Welcome Back !**, ~32px title, sub-line with a cyan link (**Sign Up** / **Sign In**) | `card` |
+| `AuthLayout` (inline in `src/routes/_auth.tsx`) | 1–4 | full-bleed diagonal gradient (slate-indigo bottom-left → cyan top-right); no logo drawn (none added — Q1); card centred (frame 1 has it right-aligned; centred everywhere) | — |
+| `AuthCard` (`auth-card.tsx`) | 1–4 | white, 581px wide, radius ~24, centred content: muted eyebrow **Welcome Back!**, ~32px title, sub-line with a cyan link (**Sign Up** / **Sign In**) | `card` |
 | `SignInForm` | 1 | `Mail` + **Email ID**; `LockKeyhole` + **Password** + `EyeOff`/`Eye` toggle; row: green switch **Remember me** · link **Forgot Password**; full-width auth-primary **Sign In** | `field`, `input-group` (InputGroupAddon + InputGroupInput + InputGroupButton), `switch`, `button` |
 | `SignUpForm` | 2 | `User` **Username**, `Mail` **Email ID**, **Password** (with toggle), static grey bullet hints (below), **Confirm Password** (Figma label reads "Password"), full-width **Sign Up**; header copy should be "Create Account" / "Already have an account? Sign In" | as above |
 | `PasswordHints` | 2 (reuse in 15) | **static** muted bullet list (not a live checklist): "Password must include these Categories: A-Z, a-z, 0-9, and Special Characters (-!@#$%^&*)" · "Password must be longer than 8 Characters, and Shorter than 250 Characters" | `field` FieldDescription |

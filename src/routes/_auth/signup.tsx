@@ -15,7 +15,7 @@ function SignUpPage() {
   return (
     <AuthCard className="pt-[95px] pb-[41px]">
       <AuthHeader
-        eyebrow="Welcome !"
+        eyebrow="Welcome!"
         title="Create Account"
         prompt="Already have an account?"
         linkLabel="Sign In"
