@@ -1,10 +1,19 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { SectionPlaceholder } from '#/components/section-placeholder'
+import { WebhookDetailCard } from '#/features/webhooks/components/webhook-detail-card'
+import { WebhookNotFound } from '#/features/webhooks/components/webhook-not-found'
+import { findSampleWebhook } from '#/features/webhooks/sample'
 
-// Placeholder: built in the UI pass (see docs/SCREEN_MAP.md).
+// Frame 35: webhook detail.
 export const Route = createFileRoute('/_app/practices/$practiceId/webhooks/$webhookId/')({
   staticData: { crumb: 'Webhook Details' },
   head: () => ({ meta: [{ title: 'Webhook Details · IntraConnect' }] }),
-  component: () => <SectionPlaceholder section="Webhook Details" />,
+  component: WebhookDetailPage,
 })
+
+function WebhookDetailPage() {
+  const { practiceId, webhookId } = Route.useParams()
+  const webhook = findSampleWebhook(webhookId)
+  if (!webhook) return <WebhookNotFound practiceId={practiceId} />
+  return <WebhookDetailCard practiceId={practiceId} webhook={webhook} />
+}
