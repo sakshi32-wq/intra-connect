@@ -126,5 +126,5 @@ export const db = {
   mfaDevices: createTable(mfaDevicesSeed, byId, 'MFA device'),
   organisation: createRecord(organisationSeed),
   currentUser: createRecord(currentUserSeed),
-  auth: createAuthService(orgUsersSeed.map((user) => user.email)),
+  auth: createAuthService(orgUsersSeed, currentUserSeed),
 }

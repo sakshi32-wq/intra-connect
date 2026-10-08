@@ -1,32 +1,19 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 
-import { Button } from '#/components/ui/button'
-import { clearSession } from '#/lib/session'
+import { PageHeader } from '#/components/page-header'
+import { SectionPlaceholder } from '#/components/section-placeholder'
 
-// Placeholder until Phase 4 builds the Overview screen; sign-out moves to the
-// sidebar user menu in Phase 3.
+// The Overview body (onboarding stepper + diagram) is built in Phase 4.
 export const Route = createFileRoute('/_app/overview')({
   head: () => ({ meta: [{ title: 'Overview · IntraConnect' }] }),
   component: OverviewPage,
 })
 
 function OverviewPage() {
-  const { session } = Route.useRouteContext()
-  const navigate = useNavigate()
-
   return (
-    <main className="grid min-h-svh place-content-center gap-4 text-center">
-      <h1 className="text-title font-medium">Overview</h1>
-      <p className="text-muted-foreground">Signed in as {session.email}</p>
-      <Button
-        variant="outline"
-        onClick={() => {
-          clearSession()
-          void navigate({ to: '/login' })
-        }}
-      >
-        Sign out
-      </Button>
-    </main>
+    <>
+      <PageHeader title="Overview" variant="navy" />
+      <SectionPlaceholder section="Overview" />
+    </>
   )
 }

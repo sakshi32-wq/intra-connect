@@ -16,6 +16,10 @@ import { Route as AppOverviewRouteImport } from './routes/_app/overview'
 import { Route as AuthForgotPasswordRouteImport } from './routes/_auth/forgot-password'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as AuthSignupRouteImport } from './routes/_auth/signup'
+import { Route as AppConnectionsIndexRouteImport } from './routes/_app/connections/index'
+import { Route as AppLogsIndexRouteImport } from './routes/_app/logs/index'
+import { Route as AppPracticesIndexRouteImport } from './routes/_app/practices/index'
+import { Route as AppSettingsIndexRouteImport } from './routes/_app/settings/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -50,6 +54,26 @@ const AuthSignupRoute = AuthSignupRouteImport.update({
   path: '/signup',
   getParentRoute: () => AuthRoute,
 } as any)
+const AppConnectionsIndexRoute = AppConnectionsIndexRouteImport.update({
+  id: '/connections/',
+  path: '/connections/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppLogsIndexRoute = AppLogsIndexRouteImport.update({
+  id: '/logs/',
+  path: '/logs/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPracticesIndexRoute = AppPracticesIndexRouteImport.update({
+  id: '/practices/',
+  path: '/practices/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsIndexRoute = AppSettingsIndexRouteImport.update({
+  id: '/settings/',
+  path: '/settings/',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -57,6 +81,10 @@ export interface FileRoutesByFullPath {
   '/forgot-password': typeof AuthForgotPasswordRoute
   '/login': typeof AuthLoginRoute
   '/signup': typeof AuthSignupRoute
+  '/connections/': typeof AppConnectionsIndexRoute
+  '/logs/': typeof AppLogsIndexRoute
+  '/practices/': typeof AppPracticesIndexRoute
+  '/settings/': typeof AppSettingsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -64,6 +92,10 @@ export interface FileRoutesByTo {
   '/forgot-password': typeof AuthForgotPasswordRoute
   '/login': typeof AuthLoginRoute
   '/signup': typeof AuthSignupRoute
+  '/connections': typeof AppConnectionsIndexRoute
+  '/logs': typeof AppLogsIndexRoute
+  '/practices': typeof AppPracticesIndexRoute
+  '/settings': typeof AppSettingsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -74,12 +106,34 @@ export interface FileRoutesById {
   '/_auth/forgot-password': typeof AuthForgotPasswordRoute
   '/_auth/login': typeof AuthLoginRoute
   '/_auth/signup': typeof AuthSignupRoute
+  '/_app/connections/': typeof AppConnectionsIndexRoute
+  '/_app/logs/': typeof AppLogsIndexRoute
+  '/_app/practices/': typeof AppPracticesIndexRoute
+  '/_app/settings/': typeof AppSettingsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/overview' | '/forgot-password' | '/login' | '/signup'
+  fullPaths:
+    | '/'
+    | '/overview'
+    | '/forgot-password'
+    | '/login'
+    | '/signup'
+    | '/connections/'
+    | '/logs/'
+    | '/practices/'
+    | '/settings/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/overview' | '/forgot-password' | '/login' | '/signup'
+  to:
+    | '/'
+    | '/overview'
+    | '/forgot-password'
+    | '/login'
+    | '/signup'
+    | '/connections'
+    | '/logs'
+    | '/practices'
+    | '/settings'
   id:
     | '__root__'
     | '/'
@@ -89,6 +143,10 @@ export interface FileRouteTypes {
     | '/_auth/forgot-password'
     | '/_auth/login'
     | '/_auth/signup'
+    | '/_app/connections/'
+    | '/_app/logs/'
+    | '/_app/practices/'
+    | '/_app/settings/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -148,15 +206,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthSignupRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_app/connections/': {
+      id: '/_app/connections/'
+      path: '/connections'
+      fullPath: '/connections/'
+      preLoaderRoute: typeof AppConnectionsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/logs/': {
+      id: '/_app/logs/'
+      path: '/logs'
+      fullPath: '/logs/'
+      preLoaderRoute: typeof AppLogsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/practices/': {
+      id: '/_app/practices/'
+      path: '/practices'
+      fullPath: '/practices/'
+      preLoaderRoute: typeof AppPracticesIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/settings/': {
+      id: '/_app/settings/'
+      path: '/settings'
+      fullPath: '/settings/'
+      preLoaderRoute: typeof AppSettingsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
 interface AppRouteChildren {
   AppOverviewRoute: typeof AppOverviewRoute
+  AppConnectionsIndexRoute: typeof AppConnectionsIndexRoute
+  AppLogsIndexRoute: typeof AppLogsIndexRoute
+  AppPracticesIndexRoute: typeof AppPracticesIndexRoute
+  AppSettingsIndexRoute: typeof AppSettingsIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppOverviewRoute: AppOverviewRoute,
+  AppConnectionsIndexRoute: AppConnectionsIndexRoute,
+  AppLogsIndexRoute: AppLogsIndexRoute,
+  AppPracticesIndexRoute: AppPracticesIndexRoute,
+  AppSettingsIndexRoute: AppSettingsIndexRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)

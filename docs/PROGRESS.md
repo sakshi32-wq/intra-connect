@@ -1,6 +1,6 @@
 # Progress
 
-**In progress:** Phase 3 — app shell (sidebar, header, user menu)
+**In progress:** Phase 3 — code review of the shell
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -33,7 +33,8 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 - [x] ⏸ Review — approved 2026-10-08
 
 ## Phase 3 — App shell
-- [ ] `_app` layout: AppSidebar (nav, Documentation/API Reference links, footer env/org switchers + user card), PageHeader (white + navy variants)
+- [x] `_app` layout: AppSidebar (nav, Documentation/API Reference links, footer env/org switchers + user card with Sign out), PageHeader (white + navy variants), section placeholders for Connection/Practices/Logs/Setting; sidebar 372px at 1920 → 260px min at 1280
+- [ ] Add "User Details" to the user menu once `/settings/user-details` exists (Phase 9)
 - [ ] ⏸ Review
 
 ## Phase 4 — Overview

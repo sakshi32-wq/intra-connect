@@ -1,4 +1,5 @@
 import type { Session } from '#/features/auth/types'
+import type { CurrentUser, OrgUser } from '#/features/settings/types'
 import { HttpError } from '#/lib/http-error'
 import { latency } from './latency'
 
@@ -9,8 +10,17 @@ const MIN_PASSWORD_LENGTH = 6
  * Mock identity service. Any well-formed email with a password of at least
  * six characters signs in; sign-up only rejects emails already registered.
  */
-export function createAuthService(seedEmails: ReadonlyArray<string>) {
-  const registered = new Set(seedEmails.map((email) => email.toLowerCase()))
+function nameFromEmail(email: string) {
+  return email
+    .split('@')[0]
+    .split(/[._-]+/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ')
+}
+
+export function createAuthService(users: ReadonlyArray<OrgUser>, profile: CurrentUser) {
+  const registered = new Set(users.map((user) => user.email.toLowerCase()))
 
   return {
     async signIn(input: { email: string; password: string }): Promise<Session> {
@@ -29,6 +39,18 @@ export function createAuthService(seedEmails: ReadonlyArray<string>) {
       }
       registered.add(email)
       return { email }
+    },
+
+    /** Profile of the signed-in user ("me" endpoint). */
+    async me(email: string): Promise<CurrentUser> {
+      await latency()
+      const known = users.find((user) => user.email.toLowerCase() === email.toLowerCase())
+      return {
+        ...profile,
+        id: known?.id ?? `usr_${email.toLowerCase()}`,
+        name: known?.name ?? nameFromEmail(email),
+        email: email.toLowerCase(),
+      }
     },
 
     async requestPasswordReset(input: { email: string }) {
