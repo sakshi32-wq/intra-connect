@@ -28,7 +28,7 @@ export function StatusSwitch({ defaultActive, label, variant = 'pill', caption }
           toast.success(`${label.replace(/^Status of /, '')} is now ${next ? 'active' : 'inactive'}`)
         }}
         aria-label={label}
-        className="h-6 w-10 data-[state=checked]:bg-success data-[state=unchecked]:bg-toggle-off [&>span]:size-[18px] [&>span]:data-[state=checked]:translate-x-[18px] [&>span]:data-[state=unchecked]:translate-x-[2px]"
+        className="h-6 w-10 data-[size=default]:h-6 data-[size=default]:w-10 data-[state=checked]:bg-success data-[state=unchecked]:bg-toggle-off [&>span]:size-[18px] [&>span]:data-[state=checked]:translate-x-[18px] [&>span]:data-[state=unchecked]:translate-x-[2px]"
       />
       <label htmlFor={id} className="w-[54px] text-base text-muted-foreground">
         {active ? 'Active' : 'Inactive'}

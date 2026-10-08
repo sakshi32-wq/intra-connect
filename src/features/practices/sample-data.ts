@@ -19,7 +19,7 @@ const LOCATIONS: Array<[city: string, state: string]> = [
 const NAMES = [
   'Pace Hospital',
   'Bombay Hospital',
-  'Milaan Hospital',
+  'Milan Hospital',
   'Pune Hospital',
   'Medicover Hospital',
   'Midcover Hospital',
@@ -34,7 +34,7 @@ function slug(value: string) {
 }
 
 export const SPECIALTIES = [
-  'Orthopedic',
+  'Orthopaedic',
   'Physiotherapy',
   'Neuro-special',
   'Psychology',
@@ -129,7 +129,7 @@ export const sampleWebhooks: Array<Webhook> = [
 
 /**
  * Practices without an attached EHR connection (drives the empty states in
- * 27 and 46). Milaan Hospital (prc_003) is the sample "not connected" practice.
+ * 27 and 46). Milan Hospital (prc_003) is the sample "not connected" practice.
  */
 export function hasSampleConnection(practiceId: string) {
   return practiceId !== 'prc_003'
