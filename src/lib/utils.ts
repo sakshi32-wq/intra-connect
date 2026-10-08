@@ -6,7 +6,7 @@ export const cn = createCn({
   extend: {
     classGroups: {
       'font-size': [{ text: ['title', 'display', 'heading', 'md', '2xs'] }],
-      shadow: [{ shadow: ['header', 'card', 'panel', 'tile', 'sheet-header'] }],
+      shadow: [{ shadow: ['header', 'card', 'panel', 'tile', 'sheet-header', 'practice-card'] }],
     },
   },
 })

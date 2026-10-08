@@ -88,6 +88,13 @@
   --toggle-off: #D6D6D6;
   --toggle-pill: #E6E6E6;
 
+  /* overview diagram (frame Overview) */
+  --overview-panel: #C2E1F2;
+  --overview-tile-border: #74C3EE;
+  --overview-practice-card: #ECECEC;
+  --overview-practice-button: #484848;
+  --shadow-practice-card: 0 12px 20px rgb(0 0 0 / 0.10);
+
   /* auth */
   --auth-primary: #009AC1;
   --auth-link: #00A3CC;
@@ -168,6 +175,10 @@
   --color-inactive-badge-border: var(--inactive-badge-border);
   --color-toggle-off: var(--toggle-off);
   --color-toggle-pill: var(--toggle-pill);
+  --color-overview-panel: var(--overview-panel);
+  --color-overview-tile-border: var(--overview-tile-border);
+  --color-overview-practice-card: var(--overview-practice-card);
+  --color-overview-practice-button: var(--overview-practice-button);
   --color-auth-primary: var(--auth-primary);
   --color-auth-link: var(--auth-link);
   --color-auth-input-border: var(--auth-input-border);
@@ -184,6 +195,7 @@
   --shadow-panel: var(--shadow-panel);
   --shadow-tile: var(--shadow-tile);
   --shadow-sheet-header: var(--shadow-sheet-header);
+  --shadow-practice-card: var(--shadow-practice-card);
 
   /* type scale (size / Figma auto line-height) */
   --text-title: 2rem;        --text-title--line-height: 2.4375rem;   /* 32/39 */

@@ -1,6 +1,6 @@
 # Progress
 
-**In progress:** Phase 4 — Overview UI
+**In progress:** ⏸ Phase 4 review gate — waiting for user approval
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -39,7 +39,7 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 - [x] Review — user switched to UI-only mode (2026-10-08); shell code review stopped
 
 ## Phase 4 — Overview
-- [ ] Overview `/overview?step` (onboarding stepper + diagram)
+- [x] Overview `/overview?step` (SectionBar + reusable Stepper + EHRs/Intraconnects/Practice diagram + glossary; steps 2–4 not designed → placeholder / link to Practices); matches frame at 1920 (panel, cards, box within 1–3px)
 - [ ] ⏸ Review
 
 ## Phase 5 — Connection
