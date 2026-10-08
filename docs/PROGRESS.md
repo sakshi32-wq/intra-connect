@@ -1,8 +1,8 @@
 # Progress
 
-**In progress:** ⏸ Practices UI merged (list, add, detail tabs, webhooks) — waiting for user review. Going feature by feature (2026-10-08).
+**In progress:** ⏸ Logs UI merged — waiting for user review. Going feature by feature (2026-10-08). Next: Setting (not built yet).
 
-> **Built but not merged yet** (git branches from the parallel run, merge one feature at a time on request): Logs → `worktree-wf_034e093a-446-5`. **Not built** (agent hit the session limit): Setting — re-run later.
+> **Built but not merged yet** (git branches from the parallel run, merge one feature at a time on request): (none left). **Not built** (agent hit the session limit): Setting — re-run later.
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -66,7 +66,7 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 - [ ] ⏸ Review
 
 ## Phase 8 — Logs
-- [ ] Logs 1 `/logs` (list + detail flow) · Frame 1 filter sheet (filters in URL)
+- [x] Logs 1 `/logs` (log cards + pagination, flow diagram with selectable nodes) · Frame 1 filter sheet (local filtering; close button + overlay added)
 - [ ] ⏸ Review
 
 ## Phase 9 — Setting
