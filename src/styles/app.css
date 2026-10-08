@@ -1,2 +1,213 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import '@fontsource-variable/inter';
+
+/*
+ * Design tokens for IntraConnect.
+ * Every value is sampled from the exported Figma frames; see docs/TOKENS.md
+ * for the source frame and pixel coordinates of each one. Values marked
+ * GUESS / DERIVED there have no sample in the design.
+ * There is no dark theme in the design, so only :root is defined.
+ */
+
+:root {
+  --radius: 0.25rem;                    /* 4px: buttons, inputs, badges, small cards */
+
+  --background: #FFFFFF;
+  --foreground: #333333;                /* black/80 */
+  --card: #FFFFFF;
+  --card-foreground: #333333;
+  --popover: #FFFFFF;
+  --popover-foreground: #7F7F7F;        /* Frame 2 dropdown items are black/50 */
+
+  --primary: #1890FF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #E8F4FF;                 /* primary/10: stepper, card header, pager bar */
+  --secondary-foreground: #1890FF;
+  --muted: #F2F2F2;                     /* section bar, neutral badge */
+  --muted-foreground: #7F7F7F;          /* black/50 */
+  --accent: #E8F4FF;
+  --accent-foreground: #1890FF;
+  --destructive: #DF2A2D;
+
+  --border: #BFBFBF;                    /* black/25: inputs, dividers, cards */
+  --input: #BFBFBF;
+  --ring: #1890FF;
+
+  /* no charts in the design; a palette-derived set (GUESS) */
+  --chart-1: #1890FF;
+  --chart-2: #1AC252;
+  --chart-3: #009AC1;
+  --chart-4: #1A495F;
+  --chart-5: #DF2A2D;
+
+  --sidebar: #0F3242;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #1890FF;           /* active indicator bar */
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1674C6;            /* active row = primary/70 over sidebar */
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #8798A0;            /* white/50 divider */
+  --sidebar-ring: #1890FF;
+  --sidebar-footer: #1A495F;
+  --sidebar-caption: #A3B6BF;           /* white/60 */
+
+  /* header: two measured variants */
+  --header: #FFFFFF;                    /* most pages */
+  --header-foreground: #333333;
+  --header-muted: #7F7F7F;              /* breadcrumb links + rule */
+  --header-current: #4D4D4D;            /* breadcrumb current item */
+  --header-navy: #1A495F;               /* Overview, Logs */
+  --header-navy-foreground: #FFFFFF;
+  --header-navy-muted: #BAC8CF;         /* white/70 */
+
+  /* text steps (black alpha, flattened on white) */
+  --text-strong: #4D4D4D;               /* black/70 */
+
+  /* surfaces */
+  --table-header: #D5EBFF;              /* primary/18 */
+  --panel: #F4F4F4;                     /* key-value groups */
+  --strip: #F0F0F0;                     /* log-card strip, scrollbar track */
+  --scrollbar-thumb: #C5C5C5;
+
+  /* status */
+  --success: #1AC252;
+  --success-foreground: #FFFFFF;
+  --success-tint: #E9F9EE;              /* measured, frame 9/34 badges */
+  --info: #1890FF;
+  --info-foreground: #FFFFFF;
+  --info-tint: #E8F4FF;
+  --destructive-foreground: #FFFFFF;
+  --destructive-tint: #FCEAEA;          /* DERIVED: #DF2A2D at 10%; not in Figma */
+  --warning: #FAAD14;                   /* GUESS: no sample; Ant Design v4 warning, matching the #1890FF/#BFBFBF Ant palette */
+  --warning-foreground: #FFFFFF;
+  --warning-tint: #FFF7E6;              /* GUESS */
+  --neutral-badge: #F2F2F2;
+  --inactive-badge: #EBEBEB;
+  --inactive-badge-border: #B0B0B0;
+  --toggle-off: #D6D6D6;
+  --toggle-pill: #E6E6E6;
+
+  /* auth */
+  --auth-primary: #009AC1;
+  --auth-link: #00A3CC;
+  --auth-input-border: #7F7F7F;
+  --auth-gradient: linear-gradient(61deg, #3D5B8E 0%, #268AB8 50%, #0EB9E3 100%);
+
+  /* elevation (fitted) */
+  --shadow-header: 0 5px 10px rgb(0 0 0 / 0.25);
+  --shadow-card: 0 11px 12px rgb(0 0 0 / 0.15);
+  --shadow-panel: 0 16px 10px rgb(0 0 0 / 0.07);
+  --shadow-tile: 0 0 11px rgb(0 0 0 / 0.15);
+  --shadow-sheet-header: 0 3px 10px rgb(0 0 0 / 0.26);
+  --overlay: rgb(0 0 0 / 0.45);         /* GUESS: no scrim in any export */
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-tint: var(--destructive-tint);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-footer: var(--sidebar-footer);
+  --color-sidebar-caption: var(--sidebar-caption);
+  --color-header: var(--header);
+  --color-header-foreground: var(--header-foreground);
+  --color-header-muted: var(--header-muted);
+  --color-header-current: var(--header-current);
+  --color-header-navy: var(--header-navy);
+  --color-header-navy-foreground: var(--header-navy-foreground);
+  --color-header-navy-muted: var(--header-navy-muted);
+  --color-text-strong: var(--text-strong);
+  --color-table-header: var(--table-header);
+  --color-panel: var(--panel);
+  --color-strip: var(--strip);
+  --color-scrollbar-thumb: var(--scrollbar-thumb);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-tint: var(--success-tint);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-tint: var(--info-tint);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-tint: var(--warning-tint);
+  --color-neutral-badge: var(--neutral-badge);
+  --color-inactive-badge: var(--inactive-badge);
+  --color-inactive-badge-border: var(--inactive-badge-border);
+  --color-toggle-off: var(--toggle-off);
+  --color-toggle-pill: var(--toggle-pill);
+  --color-auth-primary: var(--auth-primary);
+  --color-auth-link: var(--auth-link);
+  --color-auth-input-border: var(--auth-input-border);
+
+  --radius-sm: var(--radius);                  /* 4  */
+  --radius-md: var(--radius);                  /* 4  shadcn default for buttons/inputs */
+  --radius-lg: calc(var(--radius) + 6px);      /* 10 panels, Overview cards */
+  --radius-xl: calc(var(--radius) + 16px);     /* 20 auth card */
+  --radius-2xl: calc(var(--radius) + 26px);    /* 30 Overview diagram */
+
+  --shadow-header: var(--shadow-header);
+  --shadow-card: var(--shadow-card);
+  --shadow-panel: var(--shadow-panel);
+  --shadow-tile: var(--shadow-tile);
+  --shadow-sheet-header: var(--shadow-sheet-header);
+
+  /* type scale (size / Figma auto line-height) */
+  --text-title: 2rem;        --text-title--line-height: 2.4375rem;   /* 32/39 */
+  --text-display: 2.25rem;   --text-display--line-height: 2.75rem;   /* 36/44 */
+  --text-heading: 1.5rem;    --text-heading--line-height: 1.8125rem; /* 24/29 */
+  --text-lg: 1.25rem;        --text-lg--line-height: 1.5rem;         /* 20/24 */
+  --text-md: 1.125rem;       --text-md--line-height: 1.375rem;       /* 18/22 */
+  --text-base: 1rem;         --text-base--line-height: 1.1875rem;    /* 16/19 */
+  --text-sm: 0.875rem;       --text-sm--line-height: 1.0625rem;      /* 14/17 */
+  --text-xs: 0.75rem;        --text-xs--line-height: 0.9375rem;      /* 12/15 */
+  --text-2xs: 0.625rem;      --text-2xs--line-height: 0.75rem;       /* 10/12 */
+
+  --spacing-sidebar: 372px;
+  --spacing-header: 98px;
+  --spacing-gutter: 42px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+  body {
+    @apply min-h-svh;
+  }
+}
