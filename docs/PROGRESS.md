@@ -1,6 +1,6 @@
 # Progress
 
-**In progress:** ⏸ Phase 0 review gate — waiting for user approval of SCREEN_MAP / TOKENS (and answers to SCREEN_MAP §7 open questions)
+**In progress:** Phase 1 — scaffold TanStack Start
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -14,7 +14,7 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 - [x] `docs/SCREEN_MAP.md` — all 69 frames → route + state (visually verified), design errors, open questions
 - [x] `docs/COMPONENTS.md` — patterns → shadcn (registry-verified), icons, install list
 - [x] `docs/TOKENS.md` — pixel-sampled colours, measured radii/shadows/layout, shadcn CSS-var mapping
-- [ ] ⏸ Present screen map + tokens; wait for approval
+- [x] ⏸ Present screen map + tokens — approved 2026-10-08 with the SCREEN_MAP §7 defaults
 
 ## Phase 1 — Foundation
 - [ ] Scaffold TanStack Start (`npx @tanstack/cli@latest create`), pnpm, TS strict
