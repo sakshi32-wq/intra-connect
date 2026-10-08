@@ -1,14 +1,18 @@
 node_modules/
+.DS_Store
 dist/
+dist-ssr/
+*.local
+.env
+.env.*
+!.env.example
+.nitro/
+.tanstack/
+.wrangler/
 .output/
 .vinxi/
-.tanstack/
-.nitro/
-*.local
-.env*
-!.env.example
-# Figma reference screenshots (re-fetchable via Figma MCP)
-design/screens/
-# Playwright comparison output
-design/compare/
+__unconfig*
+# Early Figma MCP screenshots (superseded by docs/screens/)
+design/
+# Playwright output
 .playwright-mcp/
