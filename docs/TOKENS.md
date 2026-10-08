@@ -440,6 +440,18 @@ export const LAYOUT = {
 } as const;
 ```
 
+## Contrast debt (decision 2026-10-08: keep the design colours)
+
+The build matches Figma exactly. These sampled colours fail WCAG AA (4.5:1 for text, 3:1 for controls) on white. Raise them with the designer; each is a one-token change in `src/styles/app.css`.
+
+| Token | Value | Ratio on white | Used for | AA-safe alternative |
+|---|---|---|---|---|
+| `--muted-foreground` | `#7F7F7F` | 4.00:1 | placeholders, helper text, breadcrumbs, secondary cells (app-wide) | `#737373` (4.74:1) |
+| `--auth-link` | `#00A3CC` | 2.95:1 | auth links | `#007A99` (4.95:1) |
+| `--auth-primary` | `#009AC1` | 3.29:1 (white text on it) | auth buttons | `#007A99` (4.95:1) |
+| `--success` (as text) | `#1AC252` | 2.36:1 | met password rules, success headings | `#12873A` (4.61:1) |
+| `--input` (unchecked switch track) | `#BFBFBF` | 1.84:1 | switch off state | `#8C8C8C` (3.36:1) |
+
 ## (e) Inconsistencies and what to normalise to
 
 1. **Two header styles.** Overview and Logs use a navy header (`#1A495F`, white title, `#BAC8CF` breadcrumb, no shadow). Every other page uses a white header (`#333` title, `#7F7F7F`/`#4D4D4D` breadcrumb, `--shadow-header`). Both are verified by sampling. **Normalise to the white header** (the majority: about 60 frames), unless the designer confirms the navy variant is intentional for "dashboard" pages. Keep `--header-navy*` tokens available.

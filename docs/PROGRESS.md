@@ -1,6 +1,6 @@
 # Progress
 
-**In progress:** ⏸ Phase 2 review gate — waiting for user approval (+ decision on WCAG contrast vs sampled colours)
+**In progress:** ⏸ Phase 2 review gate — waiting for user approval
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -29,7 +29,7 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 - [x] 1 Sign In `/login` · mock auth (valid email + 6+ char password), session in localStorage (sessionStorage when Remember me is off), `beforeLoad` guard → `/login?redirect=`
 - [x] 2 Sign Up `/signup` (live password rules, duplicate-email error)
 - [x] 3, 4 Forgot password `/forgot-password?step=request|sent` (+ Resend toast, Back to Sign In)
-- [x] Playwright vs screenshots (frames 1–4) + multi-agent code review: 18 confirmed findings, 17 fixed, 1 (contrast) awaiting user decision
+- [x] Playwright vs screenshots (frames 1–4) + multi-agent code review: 18 confirmed findings, 17 fixed, 1 (contrast): user chose to keep design colours — logged as contrast debt in TOKENS.md
 - [ ] ⏸ Review (Playwright vs screenshots)
 
 ## Phase 3 — App shell
