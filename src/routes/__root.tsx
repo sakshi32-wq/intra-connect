@@ -6,6 +6,7 @@ import {
 } from '@tanstack/react-router'
 import type { QueryClient } from '@tanstack/react-query'
 
+import { NotFound } from '../components/not-found'
 import { Toaster } from '../components/ui/sonner'
 import { TooltipProvider } from '../components/ui/tooltip'
 import appCss from '../styles/app.css?url'
@@ -25,9 +26,13 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'IntraConnect' },
     ],
-    links: [{ rel: 'stylesheet', href: appCss }],
+    links: [
+      { rel: 'stylesheet', href: appCss },
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+    ],
   }),
   shellComponent: RootDocument,
+  notFoundComponent: NotFound,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {

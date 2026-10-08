@@ -1,6 +1,6 @@
 # Progress
 
-**In progress:** Phase 1 — 404 page
+**In progress:** ⏸ Phase 1 review gate — waiting for user approval
 
 Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user approval.
 
@@ -22,7 +22,7 @@ Legend: `[ ]` todo · `[x]` done. Review gate (⏸) = stop and wait for user app
 - [x] shadcn components from COMPONENTS.md install list (`form` instead of `field`, per brief); theme-aware `cn` in `src/lib/utils.ts`
 - [x] Copy `docs/assets/images/*` → `public/images/` (logo wordmark placeholder is built with the sidebar in Phase 3 — SCREEN_MAP Q1)
 - [x] Mock layer: `src/mocks/db.ts` (latency 300–600 ms) + seeded `src/mocks/data/*` + feature `types.ts`; ESLint blocks `#/mocks` imports outside `src/features/*/api.ts`
-- [ ] `QueryClient` in router context; 404 page; `clean-demos`
+- [x] `QueryClient` in router context; 404 page (`src/components/not-found.tsx`, not designed — built from tokens); favicon; `clean-demos` (nothing to clean)
 - [ ] ⏸ Review
 
 ## Phase 2 — Auth
